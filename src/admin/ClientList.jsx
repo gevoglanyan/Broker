@@ -8,7 +8,7 @@ const MOCK = [
 ]
 
 export default function ClientList() {
-  const navigate        = useNavigate()
+  const navigate            = useNavigate()
   const [search, setSearch] = useState('')
 
   const filtered = MOCK.filter(c => {
@@ -17,37 +17,42 @@ export default function ClientList() {
   })
 
   return (
-    <div style={{minHeight:'100vh',background:'var(--dark)',padding:'72px 0 0'}}>
-      <div style={{maxWidth:1100,margin:'0 auto',padding:'48px 48px'}}>
-        <div style={{marginBottom:40}}>
-          <div style={{fontSize:12,fontWeight:600,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>Admin</div>
-          <h1 style={{fontFamily:'Bebas Neue',fontSize:48,letterSpacing:2}}>ALL CLIENTS</h1>
+    <div style={{minHeight:'100vh', background:'var(--dark)', padding:'68px 0 0'}}>
+      <div className="admin-wrap">
+
+        <div style={{marginBottom:32}}>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>Admin</div>
+          <h1 style={{fontFamily:'Bebas Neue',fontSize:44,letterSpacing:2}}>ALL CLIENTS</h1>
         </div>
 
-        <div style={{marginBottom:28}}>
+        <div style={{marginBottom:24}}>
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search by name, email, or vehicle..."
-            style={{maxWidth:420}}
+            style={{maxWidth:420, width:'100%'}}
           />
         </div>
 
-        <div style={{background:'var(--card2)',border:'1px solid var(--border2)',borderRadius:14,overflow:'hidden'}}>
-            {filtered.length === 0 ? (
-              <p style={{color:'var(--muted)',fontSize:14,padding:32}}>No clients found.</p>
-            ) : (
+        {filtered.length === 0 ? (
+          <p style={{color:'var(--muted)',fontSize:14,padding:'20px 0'}}>No clients found.</p>
+        ) : (
+          <>
+            {/* Desktop table */}
+            <div className="admin-table-wrap" style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,overflow:'hidden'}}>
               <table style={{width:'100%',borderCollapse:'collapse'}}>
                 <thead>
                   <tr style={{background:'var(--card)'}}>
                     {['Name','Email','Phone','Vehicle','Submitted',''].map(h => (
-                      <th key={h} style={{textAlign:'left',fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'var(--red)',padding:'16px 20px',borderBottom:'1px solid var(--border2)'}}>{h}</th>
+                      <th key={h} style={{textAlign:'left',fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'var(--red)',padding:'16px 20px',borderBottom:'1px solid var(--border)'}}>
+                        {h}
+                      </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.map(c => (
-                    <tr key={c.id} style={{cursor:'pointer',transition:'background 0.15s'}}
+                    <tr key={c.id} style={{cursor:'pointer'}}
                       onMouseEnter={e => e.currentTarget.style.background='var(--card)'}
                       onMouseLeave={e => e.currentTarget.style.background=''}
                       onClick={() => navigate(`/admin/clients/${c.id}`)}>
@@ -61,9 +66,50 @@ export default function ClientList() {
                   ))}
                 </tbody>
               </table>
-            )}
-          </div>
+            </div>
+
+            {/* Mobile cards */}
+            <div className="admin-mobile-cards" style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,overflow:'hidden'}}>
+              {filtered.map((c, i) => (
+                <div
+                  key={c.id}
+                  style={{
+                    padding:'18px 20px',
+                    borderBottom: i < filtered.length - 1 ? '1px solid var(--border)' : 'none',
+                    cursor:'pointer',
+                    WebkitTapHighlightColor:'transparent',
+                  }}
+                  onClick={() => navigate(`/admin/clients/${c.id}`)}
+                >
+                  <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:8}}>
+                    <div style={{fontSize:15,fontWeight:700,color:'#fff'}}>{c.first_name} {c.last_name}</div>
+                    <span style={{fontSize:12,color:'var(--red)',fontWeight:600,flexShrink:0,marginLeft:12}}>View →</span>
+                  </div>
+                  <div style={{fontSize:13,color:'var(--muted)',marginBottom:8}}>{c.email}</div>
+                  <div style={{display:'flex',gap:16,flexWrap:'wrap'}}>
+                    <span style={{fontSize:12,color:'var(--off-white)'}}>{c.phone}</span>
+                    <span style={{fontSize:12,color:'var(--off-white)'}}>{c.vehicle_make} {c.vehicle_model}</span>
+                    <span style={{fontSize:12,color:'var(--muted)'}}>{new Date(c.created_at).toLocaleDateString()}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
       </div>
+
+      <style>{`
+        .admin-wrap { max-width:1100px; margin:0 auto; padding:40px 48px 80px; }
+        .admin-table-wrap { display:block; }
+        .admin-mobile-cards { display:none; }
+
+        @media (max-width: 768px) {
+          .admin-wrap { padding:28px 20px 60px; }
+          .admin-table-wrap { display:none; }
+          .admin-mobile-cards { display:block; }
+        }
+      `}</style>
     </div>
   )
 }
