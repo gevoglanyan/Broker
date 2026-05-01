@@ -53,7 +53,6 @@ export default function Navbar() {
         <div className="admin-nav-links">
           <button className="nav-link" onClick={() => go('/admin')}>Dashboard</button>
           <button className="nav-link" onClick={() => go('/admin/clients')}>Clients</button>
-          <button className="nav-link" onClick={() => go('/')}>Public Site</button>
           <button className="nav-link nav-cta" onClick={logout}>Sign Out</button>
         </div>
       </nav>
