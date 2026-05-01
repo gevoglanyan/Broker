@@ -48,7 +48,7 @@ export default function StaffLogin() {
           padding: '32px 28px',
         }}>
           <h2 style={{fontFamily:'Bebas Neue', fontSize:28, letterSpacing:2, marginBottom:6}}>Sign In</h2>
-          <p style={{fontSize:14, color:'var(--muted)', marginBottom:28}}>Staff accounts only.</p>
+          <p style={{fontSize:14, color:'var(--muted)', marginBottom:28}}>Staff Accounts Only</p>
 
           <div className="form-group" style={{marginBottom:16}}>
             <label>Email</label>
