@@ -19,7 +19,14 @@ export default function ClientList() {
   return (
     <div style={{minHeight:'100vh', background:'var(--dark)', padding:'68px 0 0'}}>
       <div className="admin-wrap">
-
+        <button
+          className="btn btn-outline"
+          style={{padding:'8px 18px', fontSize:13, marginBottom:24, minHeight:'unset'}}
+          onClick={() => navigate('/admin')}
+        >
+          Back to Dashboard
+        </button>
+        
         <div style={{marginBottom:32}}>
           <div style={{fontSize:11,fontWeight:700,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>Admin</div>
           <h1 style={{fontFamily:'Bebas Neue',fontSize:44,letterSpacing:2}}>ALL CLIENTS</h1>
@@ -29,7 +36,7 @@ export default function ClientList() {
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search by name, email, or vehicle..."
+            placeholder="Search by Name, Email, or Vehicle..."
             style={{maxWidth:420, width:'100%'}}
           />
         </div>
