@@ -3,15 +3,14 @@ import { useState } from 'react'
 const EMPTY = { firstName:'', lastName:'', email:'', phone:'', subject:"I'm interested in leasing a vehicle", message:'' }
 
 const CONTACT_BLOCKS = [
-  { icon:'📍', title:'Our Location', text:'[Address]' },
-  { icon:'📞', title:'Phone',        text:'[Phone]' },
-  { icon:'✉️', title:'Email',        text:'[email@domain.com]' },
+  { icon:'📍', title:'Our Location', text:'14310 Victory Blvd\nLos Angeles, CA 90094' },
+  { icon:'📞', title:'Phone',        text:'(818) 666-6066' },
+  { icon:'✉️', title:'Email',        text:'info@elitla.com' },
 ]
 
 const HOURS = [
-  ['Monday – Friday', '9:00 AM – 7:00 PM'],
-  ['Saturday',        '9:00 AM – 5:00 PM'],
-  ['Sunday',          'By Appointment'],
+  ['Monday – Friday', '10:00 AM – 7:00 PM'],
+  ['Saturday & Sunday', 'By Appointment'],
 ]
 
 export default function Contact() {
@@ -49,9 +48,7 @@ export default function Contact() {
       <div className="form-hero">
         <div className="form-hero-eyebrow">Get in Touch</div>
         <h1 className="form-hero-title">CONTACT US</h1>
-
         <br />
-
         <p className="form-hero-sub">We'd love to hear from you. Reach out and we'll respond quickly.</p>
       </div>
 
@@ -104,11 +101,11 @@ export default function Contact() {
             <div className="form-group full">
               <label>How Can We Help?</label>
               <select value={form.subject} onChange={set('subject')}>
-                <option>I'm interested in leasing a vehicle</option>
-                <option>Credit application question</option>
-                <option>Trade-in / sell my car</option>
-                <option>Lease return</option>
-                <option>General inquiry</option>
+                <option>I'm interested in Leasing a Vehicle</option>
+                <option>Credit Application Question</option>
+                <option>Trade/Sell my Car</option>
+                <option>Lease Return</option>
+                <option>General Inquiry</option>
               </select>
             </div>
           </div>

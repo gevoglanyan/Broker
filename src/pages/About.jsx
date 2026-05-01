@@ -22,21 +22,22 @@ export default function About() {
       <div className="form-hero">
         <div className="form-hero-eyebrow">Our Story</div>
         <h1 className="form-hero-title">ABOUT US</h1>
-        <p className="form-hero-sub">Driven by integrity. Built on relationships.</p>
+        <br />
+        <p className="form-hero-sub">Driven by Integrity. Built on Relationships.</p>
       </div>
 
       <div className="about-wrap">
         <div className="about-story">
           <div className="about-body">
-            <p>Founded in [Year], <strong>PLACEHOLDER</strong> began with a simple mission: make the vehicle leasing experience honest, straightforward, and customer-first.</p>
-            <p>We're not a traditional dealership. As independent auto brokers, we work <strong>for you</strong> — not the manufacturer. That means we shop across our network of dealers to find you the best possible deal.</p>
-            <p>Whether you're leasing your very first car or you're a seasoned lessee looking to upgrade, our team brings the same level of dedication and transparency to every transaction.</p>
-            <p>We believe everyone deserves to drive a car they love at a payment that makes sense.</p>
+            <p>Elit Los Angeles is a <strong>family-owned and operated</strong> auto brokerage built on a foundation of trust, transparency, and genuine care for every customer we serve.</p>
+            <p>Founded by a family that has been passionate about cars for generations, we started Elit Los Angeles with one goal in mind: bring the same honesty and dedication we'd want for our own family to every single deal we make.</p>
+            <p>We're not a traditional dealership. As independent auto brokers, we work <strong>for you</strong> — not the manufacturer. That means we shop across our network of dealers to find you the best possible deal on any make or model, new or pre-owned.</p>
+            <p>When you work with Elit Los Angeles, you're not just a number. You're working directly with people who take pride in what they do and genuinely want to see you drive away happy. That's the Elit difference — and it's been that way since day one.</p>
           </div>
           <div className="why-image">
             <div style={{fontSize:52,marginBottom:14}}>🏆</div>
             <p className="why-quote" style={{fontSize:17}}>Voted <strong>#1 Auto Broker</strong> in our region three years running by our customers.</p>
-            <p className="why-attribution" style={{marginTop:18}}>PLACEHOLDER · Est. [Year]</p>
+            <p className="why-attribution" style={{marginTop:18}}>ELIT Los Angeles · Est. [Year]</p>
           </div>
         </div>
 
@@ -50,7 +51,6 @@ export default function About() {
             </div>
           ))}
         </div>
-
 
         <div className="section-label" style={{marginBottom:20,marginTop:56}}>The Team</div>
         <div className="team-grid">
@@ -132,7 +132,6 @@ export default function About() {
         .team-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
         .team-role { font-size: 11px; font-weight: 600; color: var(--blue-light); letter-spacing: 0.5px; text-transform: uppercase; }
 
-        /* ── TABLET ── */
         @media (max-width: 900px) {
           .about-wrap { padding: 40px 24px 64px; }
           .about-story { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
@@ -140,7 +139,6 @@ export default function About() {
           .team-grid   { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ── MOBILE ── */
         @media (max-width: 768px) {
           .about-wrap { padding: 28px 20px 56px; }
           .about-story { gap: 24px; margin-bottom: 40px; }

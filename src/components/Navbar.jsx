@@ -5,11 +5,12 @@ import './Navbar.css'
 
 const NAV_LINKS = [
   { path: '/',            label: 'Home' },
-  { path: '/inventory',   label: 'Inventory' },
-  { path: '/credit',      label: 'Credit Application' },
+  { path: '/inventory',   label: 'Car Inventory' },
+  { path: '/offers',      label: 'Monthly Offers' },
+  { path: '/faqs',        label: 'FAQs' },
   { path: '/about',       label: 'About Us' },
   { path: '/contact',     label: 'Contact Us' },
-  { path: '/admin/login', label: 'Staff Login', cta: true },
+  { path: '/credit',      label: 'Apply for Credit' , cta: true },
 ]
 
 export default function Navbar() {
@@ -47,7 +48,7 @@ export default function Navbar() {
     return (
       <nav className="navbar">
         <button className="logo" onClick={() => go('/admin')}>
-          PLACEHOLDER <span className="admin-badge">ADMIN</span>
+          ELIT Los Angeles <span className="admin-badge">ADMIN</span>
         </button>
         <div className="admin-nav-links">
           <button className="nav-link" onClick={() => go('/admin')}>Dashboard</button>
@@ -62,7 +63,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <button className="logo" onClick={() => go('/')}>PLACEHOLDER</button>
+        <button className="logo" onClick={() => go('/')}>ELIT Los Angeles</button>
         <ul className="nav-links">
           {NAV_LINKS.map(({ path, label, cta }) => (
             <li key={path}>

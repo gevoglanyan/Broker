@@ -1,13 +1,17 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-import Navbar from './components/Navbar'
-import ProtectedRoute from './components/ProtectedRoute'
+import Navbar          from './components/Navbar'
+import ProtectedRoute  from './components/ProtectedRoute'
 
 import Home            from './pages/Home'
 import Inventory       from './pages/Inventory'
 import CreditApplication from './pages/CreditApplication'
 import About           from './pages/About'
 import Contact         from './pages/Contact'
+import Offers          from './pages/Offers'
+import FAQs            from './pages/FAQs'
+import Privacy         from './pages/Privacy'
+import Terms           from './pages/Terms'
 
 import StaffLogin      from './admin/StaffLogin'
 import Dashboard       from './admin/Dashboard'
@@ -24,6 +28,10 @@ export default function App() {
         <Route path="/credit"    element={<CreditApplication />} />
         <Route path="/about"     element={<About />} />
         <Route path="/contact"   element={<Contact />} />
+        <Route path="/offers"    element={<Offers />} />
+        <Route path="/faqs"      element={<FAQs />} />
+        <Route path="/privacy"   element={<Privacy />} />
+        <Route path="/terms"     element={<Terms />} />
 
         <Route path="/admin/login" element={<StaffLogin />} />
 
