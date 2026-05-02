@@ -102,7 +102,7 @@
 .footer-col li { margin-bottom:10px; }
 .footer-col button, .footer-col span { font-size:14px; color:var(--muted); background:none; border:none; cursor:pointer; padding:0; font-family:'Outfit',sans-serif; transition:color 0.2s ease; -webkit-tap-highlight-color:transparent; }
 .footer-col button:hover { color:var(--white); }
-.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:center; align-items:center; }
 .footer-copy { font-size:13px; color:var(--muted2); }
 
 /* ══════════════════════════

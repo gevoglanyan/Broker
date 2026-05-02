@@ -5,12 +5,12 @@ import './Navbar.css'
 
 const NAV_LINKS = [
   { path: '/',            label: 'Home' },
-  { path: '/inventory',   label: 'Car Inventory' },
+  { path: '/inventory',   label: 'Vehicle Inventory' },
   { path: '/offers',      label: 'Monthly Offers' },
   { path: '/faqs',        label: 'FAQs' },
   { path: '/about',       label: 'About Us' },
   { path: '/contact',     label: 'Contact Us' },
-  { path: '/credit',      label: 'Apply for Credit' , cta: true },
+  { path: '/credit',      label: 'Credit Application' , cta: true },
 ]
 
 export default function Navbar() {
@@ -48,11 +48,13 @@ export default function Navbar() {
     return (
       <nav className="navbar">
         <button className="logo" onClick={() => go('/admin')}>
-          ELIT Los Angeles <span className="admin-badge">ADMIN</span>
+          <span style={{color:'var(--red)'}}>ELIT</span> Los Angeles <span className="admin-badge">ADMIN</span>
         </button>
         <div className="admin-nav-links">
-          <button className="nav-link" onClick={() => go('/admin')}>Dashboard</button>
-          <button className="nav-link" onClick={() => go('/admin/clients')}>Clients</button>
+          <button className="nav-link" onClick={() => go('/admin')}>Staff Dashboard</button>
+          <button className="nav-link" onClick={() => go('/admin/clients')}>View Clients</button>
+          <button className="nav-link" onClick={() => go('/admin/contacts')}>View Contact Submission</button>
+          <button className="nav-link" onClick={() => go('/admin/inventory')}>Manage Vehicle Inventory</button>
           <button className="nav-link nav-cta" onClick={logout}>Sign Out</button>
         </div>
       </nav>
@@ -62,7 +64,9 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <button className="logo" onClick={() => go('/')}>ELIT Los Angeles</button>
+        <button className="logo" onClick={() => go('/')}>
+          <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> Los Angeles
+        </button>
         <ul className="nav-links">
           {NAV_LINKS.map(({ path, label, cta }) => (
             <li key={path}>

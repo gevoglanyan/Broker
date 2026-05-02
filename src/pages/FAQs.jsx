@@ -116,7 +116,7 @@ export default function FAQs() {
         <div className="form-hero-eyebrow">Got Questions?</div>
         <h1 className="form-hero-title">FREQUENTLY ASKED QUESTIONS</h1>
         <br />
-        <p className="form-hero-sub">Everything you Need to Know.</p>
+        <p className="form-hero-sub">Everything You Need to Know</p>
       </div>
 
       <div className="form-container" style={{maxWidth: 760}}>

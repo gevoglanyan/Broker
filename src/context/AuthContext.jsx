@@ -1,24 +1,39 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { supabase } from '../services/supabase'
 
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  const [staff, setStaff] = useState(null)
+  const [staff, setStaff]     = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  // Connect Supabase
-  
+  useEffect(() => {
+    // Check for existing session on mount
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setStaff(session?.user ?? null)
+      setLoading(false)
+    })
+
+    // Listen for login / logout events
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setStaff(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
   const login = async (email, password) => {
-    if (email === 'staff@placeholder.com' && password === 'password') {
-      setStaff({ email })
-    } else {
-      throw new Error('Invalid credentials')
-    }
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) throw error
+    return data
   }
 
-  const logout = () => setStaff(null)
+  const logout = async () => {
+    await supabase.auth.signOut()
+  }
 
   return (
-    <AuthContext.Provider value={{ staff, loading: false, login, logout }}>
+    <AuthContext.Provider value={{ staff, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
@@ -27,4 +42,3 @@ export function AuthProvider({ children }) {
 export function useAuth() {
   return useContext(AuthContext)
 }
-

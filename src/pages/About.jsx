@@ -23,23 +23,25 @@ export default function About() {
         <div className="form-hero-eyebrow">Our Story</div>
         <h1 className="form-hero-title">ABOUT US</h1>
         <br />
-        <p className="form-hero-sub">Driven by Integrity. Built on Relationships.</p>
+        <p className="form-hero-sub">Driven by Integrity — Built on Relationships</p>
       </div>
 
       <div className="about-wrap">
         <div className="about-story">
           <div className="about-body">
-            <p>Elit Los Angeles is a <strong>family-owned and operated</strong> auto brokerage built on a foundation of trust, transparency, and genuine care for every customer we serve.</p>
-            <p>Founded by a family that has been passionate about cars for generations, we started Elit Los Angeles with one goal in mind: bring the same honesty and dedication we'd want for our own family to every single deal we make.</p>
+            <p><strong><span style={{color:'var(--red)'}}>ELIT</span></strong> Los Angeles Los Angeles is a <strong>family-owned and operated</strong> auto brokerage built on a foundation of trust, transparency, and genuine care for every customer we serve.</p>
+            <p>Founded by a family that has been passionate about cars for generations, we started <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> Los Angeles with one goal in mind: bring the same honesty and dedication we'd want for our own family to every single deal we make.</p>
             <p>We're not a traditional dealership. As independent auto brokers, we work <strong>for you</strong> — not the manufacturer. That means we shop across our network of dealers to find you the best possible deal on any make or model, new or pre-owned.</p>
-            <p>When you work with Elit Los Angeles, you're not just a number. You're working directly with people who take pride in what they do and genuinely want to see you drive away happy. That's the Elit difference — and it's been that way since day one.</p>
+            <p>When you work with <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> Los Angeles, you're not just a number. You're working directly with people who take pride in what they do and genuinely want to see you drive away happy. That's the <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> difference — and it's been that way since day one.</p>
           </div>
           <div className="why-image">
             <div style={{fontSize:52,marginBottom:14}}>🏆</div>
             <p className="why-quote" style={{fontSize:17}}>Voted <strong>#1 Auto Broker</strong> in our region three years running by our customers.</p>
-            <p className="why-attribution" style={{marginTop:18}}>ELIT Los Angeles · Est. [Year]</p>
+            <p className="why-attribution" style={{marginTop:18}}><strong><span style={{color:'var(--red)'}}>ELIT</span></strong>  Los Angeles · Est. 2015</p>
           </div>
         </div>
+
+        <br /> <br />
 
         <div className="section-label" style={{marginBottom:20}}>Our Values</div>
         <div className="values-grid">
@@ -51,6 +53,8 @@ export default function About() {
             </div>
           ))}
         </div>
+
+        <br /> <br />
 
         <div className="section-label" style={{marginBottom:20,marginTop:56}}>The Team</div>
         <div className="team-grid">
@@ -64,7 +68,6 @@ export default function About() {
             </div>
           ))}
         </div>
-
       </div>
 
       <style>{`

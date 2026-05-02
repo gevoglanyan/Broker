@@ -9,7 +9,7 @@ export default function Offers() {
         <div className="form-hero-eyebrow">Updated Monthly</div>
         <h1 className="form-hero-title">MONTHLY LEASE SPECIALS</h1>
         <br />
-        <p className="form-hero-sub">Exclusive Deals Updated Monthly — contact us to lock in your rate.</p>
+        <p className="form-hero-sub">Exclusive Deals Updated Monthly — Contact Us to Lock in Your Rate</p>
       </div>
 
       <div className="form-container" style={{maxWidth: 760}}>
