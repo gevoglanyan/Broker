@@ -168,7 +168,7 @@ export default function Inventory() {
         <div className="form-hero-eyebrow">Available Now</div>
         <h1 className="form-hero-title">OUR INVENTORY</h1>
         <br/>
-        <p className="form-hero-sub">Browse our New and Pre-Owned Lease Specials — Updated Daily.</p>
+        <p className="form-hero-sub">Browse our New and Pre-Owned Lease Specials — Updated Daily</p>
       </div>
 
       <div style={{maxWidth:1100, margin:'0 auto', padding:'48px 20px 80px'}}>
