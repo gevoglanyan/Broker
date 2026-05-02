@@ -7,7 +7,7 @@ const BRANDS = [
   'Toyota','Honda','BMW','Mercedes-Benz','Lexus','Audi','Hyundai','Kia',
   'Volkswagen','Subaru','Jeep','Acura','Infiniti','Cadillac','Chevrolet',
   'Ford','GMC','Dodge','Ram','Nissan','Mazda','Buick','Lincoln','Volvo',
-  'Genesis', 'Porsche','Land Rover','Jaguar','Alfa Romeo','Maserati',
+  'Genesis','Porsche','Land Rover','Jaguar','Alfa Romeo','Maserati',
   'Ferrari','Lamborghini','Bentley','Rolls-Royce','McLaren','Aston Martin',
 ]
 
@@ -40,16 +40,17 @@ export default function Home() {
         <div className="hero-bg" />
         <div className="hero-grid-lines" />
         <div className="hero-inner">
-        <div>
-          <div className="hero-eyebrow fade-up">Premium Auto Leasing</div>
+          <div>
+            <div className="hero-eyebrow fade-up">Premium Auto Leasing</div>
             <h1 className="hero-title fade-up-1">DRIVE<br /><span>YOUR</span><br />DREAM</h1>
             <p className="hero-subtitle fade-up-1">
-            <br />
-            <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> is your trusted luxury auto broker in Los Angeles. We connect you with the best lease deals across all major brands — from everyday commuters to exotic supercars.</p>
+              <br />
+              <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> is your trusted luxury auto broker in Los Angeles. We connect you with the best lease deals across all major brands — from everyday commuters to exotic supercars.
+            </p>
             <br />
             <div className="hero-btns fade-up-2">
-              <button className="btn btn-primary" onClick={() => navigate('/inventory')}>Browse Inventory ›</button>
-              <button className="btn btn-outline" onClick={() => navigate('/credit')}>Apply for Credit</button>
+              <button className="btn btn-primary" onClick={() => navigate('/inventory')}>Browse Inventory</button>
+              <button className="btn btn-outline" onClick={() => navigate('/credit')}>Credit Application</button>
             </div>
             <div className="hero-stats fade-up-3">
               <div>
@@ -95,16 +96,29 @@ export default function Home() {
               <div className="section-label">Hot Deals</div>
               <div className="section-title">FEATURED LEASES</div>
             </div>
-            <button className="btn btn-outline" style={{padding:'9px 20px',fontSize:13}} onClick={() => navigate('/inventory')}>View All →</button>
+            <button className="btn btn-outline" style={{padding:'9px 20px',fontSize:13}} onClick={() => navigate('/inventory')}>
+              View All →
+            </button>
           </div>
           <div className="cars-grid">
             {featured.map(car => {
-              const meta = car.meta ? car.meta.split(',').map(m => m.trim()) : []
+              const meta     = car.meta ? car.meta.split(',').map(m => m.trim()) : []
+              const hasImage = car.images && car.images.length > 0
               return (
-                <div key={car.id} className="car-card">
-                  <div className="car-img-placeholder">
-                    <div className="car-img-make">{car.make}</div>
-                    <div className="car-img-model">{car.model}</div>
+                <div key={car.id} className="car-card" onClick={() => navigate('/inventory')} style={{cursor:'pointer'}}>
+                  <div className="car-img-placeholder" style={{position:'relative', overflow:'hidden'}}>
+                    {hasImage ? (
+                      <img
+                        src={car.images[0]}
+                        alt={`${car.make} ${car.model}`}
+                        style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}
+                      />
+                    ) : (
+                      <>
+                        <div className="car-img-make">{car.make}</div>
+                        <div className="car-img-model">{car.model}</div>
+                      </>
+                    )}
                     <div className="car-img-label">{car.label || car.year}</div>
                   </div>
                   <div className="car-info">
@@ -127,7 +141,7 @@ export default function Home() {
       <section className="why-section">
         <div className="why-inner">
           <div className="section-label">Why Us</div>
-          <div className="section-title">THE <strong><span style={{color:'var(--red)'}}>CRYSTAL AUTO LEASING</span></strong> DIFFERENCE</div>
+          <div className="section-title">THE <strong><span style={{color:'var(--gold)'}}>CRYSTAL AUTO LEASING</span></strong> DIFFERENCE</div>
           <div className="why-grid">
             <div className="why-features">
               {FEATURES.map(f => (
@@ -143,6 +157,7 @@ export default function Home() {
             <br />
             <div className="why-image">
               <div className="big-number">10</div>
+              <br /> <br />
               <p className="why-quote">Over <strong>10 years</strong> putting customers in the driver's seat at prices they can feel good about.</p>
               <p className="why-attribution"><strong>CRYSTAL AUTO LEASING</strong> — Est. 2015</p>
             </div>
@@ -165,6 +180,9 @@ export default function Home() {
               <p className="footer-tagline" style={{marginTop:10, maxWidth:'100%'}}>
                 From everyday commuters to exotic supercars — we source any vehicle, new or pre-owned, and deliver the best deal straight to you.
               </p>
+              <p className="footer-tagline" style={{marginTop:10, maxWidth:'100%'}}>
+                No hidden fees. No runaround. Just real people who care.
+              </p>
             </div>
             <div className="footer-col">
               <h4>Quick Links</h4>
@@ -183,6 +201,7 @@ export default function Home() {
                 <li><button onClick={() => navigate('/contact')}>Contact Us</button></li>
                 <li><button onClick={() => navigate('/privacy')}>Privacy Policy</button></li>
                 <li><button onClick={() => navigate('/terms')}>Terms of Use</button></li>
+                <br />
                 <li><button onClick={() => navigate('/admin/login')}>Staff Portal</button></li>
               </ul>
             </div>

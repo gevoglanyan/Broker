@@ -11,8 +11,8 @@ const CONTACT_BLOCKS = [
 
 const HOURS = [
   ['Monday – Friday', '10:00 AM – 6:00 PM'],
-  ['Saturday', 'By Appointment'],
-  ['Sunday', 'By Appointment'],
+  ['Saturday',        'By Appointment'],
+  ['Sunday',          'By Appointment'],
 ]
 
 export default function Contact() {
@@ -94,6 +94,34 @@ export default function Contact() {
               </tbody>
             </table>
           </div>
+
+          <br />
+
+          <div style={{marginTop:32}}>
+            <div style={{borderRadius:12,overflow:'hidden',border:'1px solid var(--border)',height:220}}>
+              <iframe
+                title="Crystal Auto Leasing Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.4763563305!2d-118.34248492428638!3d34.178220000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c295c6b8f7a5e7%3A0xa4f3c0e1b2d94c6a!2s1907+W+Burbank+Blvd%2C+Burbank%2C+CA+91506!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{border:0, display:'block', filter:'invert(90%) hue-rotate(180deg)'}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <br />
+            <p style={{fontSize:12,color:'var(--muted)',marginTop:10,textAlign:'center'}}>
+              <a
+                href="https://maps.google.com/?q=1907+W+Burbank+Blvd+Unit+B+Burbank+CA+91506"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{color:'var(--gold-light)',textDecoration:'none',fontWeight:600}}
+              >
+                Open in Google Maps →
+              </a>
+            </p>
+          </div>
         </div>
 
         <div className="form-card contact-form-card">
@@ -138,9 +166,17 @@ export default function Contact() {
       </div>
 
       <style>{`
-        .contact-wrap { max-width:1200px; margin:0 auto; padding:48px 48px 80px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+        .contact-wrap {
+          max-width: 1200px; margin: 0 auto; padding: 48px 48px 80px;
+          display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+        }
         .contact-block { display:flex; gap:16px; align-items:flex-start; margin-bottom:28px; }
-        .contact-icon { width:44px; height:44px; border-radius:10px; flex-shrink:0; background:rgba(232,32,42,0.1); border:1px solid rgba(232,32,42,0.2); display:flex; align-items:center; justify-content:center; font-size:18px; }
+        .contact-icon {
+          width:44px; height:44px; border-radius:10px; flex-shrink:0;
+          background: rgba(201,168,76,0.1);
+          border: 1px solid rgba(201,168,76,0.2);
+          display:flex; align-items:center; justify-content:center; font-size:18px;
+        }
         .contact-block-title { font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; }
         .contact-block-text  { font-size:14px; color:var(--off-white); line-height:1.6; }
         .hours-section { margin-top:32px; padding-top:28px; border-top:1px solid var(--border); }
@@ -149,7 +185,9 @@ export default function Contact() {
         .hours-time { padding:10px 0; font-size:14px; color:var(--muted); text-align:right; border-bottom:1px solid var(--border); }
         .hours-table tr:last-child td { border-bottom:none; }
         .contact-form-card { margin-bottom:0; }
+
         @media (max-width:900px) { .contact-wrap { padding:40px 24px 64px; gap:40px; } }
+
         @media (max-width:768px) {
           .contact-wrap { grid-template-columns:1fr; gap:0; padding:0 0 56px; }
           .contact-info-section { padding:28px 20px 0; }
