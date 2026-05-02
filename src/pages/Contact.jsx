@@ -15,13 +15,23 @@ const HOURS = [
   ['Sunday',          'By Appointment'],
 ]
 
+const fmtPhone = (v) => {
+  const d = v.replace(/\D/g,'').slice(0,10)
+  if (d.length <= 3) return d
+  if (d.length <= 6) return '(' + d.slice(0,3) + ') ' + d.slice(3)
+  return '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6)
+}
+
 export default function Contact() {
   const [form, setForm]           = useState(EMPTY)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError]         = useState('')
   const [loading, setLoading]     = useState(false)
 
-  const set = (field) => (e) => setForm(f => ({...f, [field]: e.target.value}))
+  const set = (field, fmt) => (e) => {
+    const val = fmt ? fmt(e.target.value) : e.target.value
+    setForm(f => ({...f, [field]: val}))
+  }
 
   const handleSubmit = async () => {
     if (!form.firstName || !form.email || !form.message) {
@@ -64,10 +74,11 @@ export default function Contact() {
         <p className="form-hero-sub">We'd Love to Hear From You. Reach Out and We'll Respond Quickly</p>
       </div>
 
-      <br /><br />
+      <br />
 
       <div className="contact-wrap">
         <div className="contact-info-section">
+
           {CONTACT_BLOCKS.map(b => (
             <div key={b.title} className="contact-block">
               <div className="contact-icon">{b.icon}</div>
@@ -95,7 +106,7 @@ export default function Contact() {
             </table>
           </div>
 
-          <br />
+          <br /> <br />
 
           <div style={{marginTop:32}}>
             <div style={{borderRadius:12,overflow:'hidden',border:'1px solid var(--border)',height:220}}>
@@ -109,30 +120,52 @@ export default function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </div>
+            </div> 
+
             <br />
-            <p style={{fontSize:12,color:'var(--muted)',marginTop:10,textAlign:'center'}}>
+
+            <p style={{fontSize:12,color:'var(--muted)',marginTop:8,textAlign:'center'}}>
               <a
                 href="https://maps.google.com/?q=1907+W+Burbank+Blvd+Unit+B+Burbank+CA+91506"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{color:'var(--gold-light)',textDecoration:'none',fontWeight:600}}
               >
-                Open in Google Maps →
+                Open in Google Maps
               </a>
             </p>
           </div>
+
         </div>
 
         <div className="form-card contact-form-card">
           <div className="form-section-title">Send Us a Message</div>
           <div className="form-row">
-            <div className="form-group"><label>First Name</label><input value={form.firstName} onChange={set('firstName')} placeholder="John" /></div>
-            <div className="form-group"><label>Last Name</label><input value={form.lastName} onChange={set('lastName')} placeholder="Smith" /></div>
+            <div className="form-group">
+              <label>First Name</label>
+              <input value={form.firstName} onChange={set('firstName')} placeholder="John" />
+            </div>
+            <div className="form-group">
+              <label>Last Name</label>
+              <input value={form.lastName} onChange={set('lastName')} placeholder="Smith" />
+            </div>
           </div>
           <div className="form-row">
-            <div className="form-group"><label>Email</label><input type="email" value={form.email} onChange={set('email')} placeholder="john@example.com" /></div>
-            <div className="form-group"><label>Phone</label><input type="tel" value={form.phone} onChange={set('phone')} placeholder="(555) 000-0000" /></div>
+            <div className="form-group">
+              <label>Email</label>
+              <input type="email" value={form.email} onChange={set('email')} placeholder="john@example.com" />
+            </div>
+            <div className="form-group">
+              <label>Phone</label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={set('phone', fmtPhone)}
+                placeholder="(555) 000-0000"
+                inputMode="numeric"
+                maxLength={14}
+              />
+            </div>
           </div>
           <div className="form-row">
             <div className="form-group full">
@@ -159,10 +192,11 @@ export default function Contact() {
 
           <div style={{marginTop:8}}>
             <button className="btn btn-primary" style={{width:'100%',justifyContent:'center',padding:15}} onClick={handleSubmit} disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message →'}
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </div>
+
       </div>
 
       <style>{`

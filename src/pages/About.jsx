@@ -36,8 +36,8 @@ export default function About() {
           </div>
           <div className="why-image">
             <div style={{fontSize:52,marginBottom:14}}>🏆</div>
-            <p className="why-quote" style={{fontSize:17}}>Voted <strong>#1 Auto Broker</strong> in our region three years running by our customers.</p>
-            <p className="why-attribution" style={{marginTop:18}}><strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong> · Est. 2015</p>
+            {/*<p className="why-quote" style={{fontSize:17}}>Voted <strong>#1 Auto Broker</strong> in our region three years running by our customers.</p>*/}
+            <p className="why-attribution" style={{marginTop:18}}><strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong></p>
           </div>
         </div>
 

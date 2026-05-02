@@ -154,6 +154,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            {/*
             <br />
             <div className="why-image">
               <div className="big-number">10</div>
@@ -161,6 +162,7 @@ export default function Home() {
               <p className="why-quote">Over <strong>10 years</strong> putting customers in the driver's seat at prices they can feel good about.</p>
               <p className="why-attribution"><strong>CRYSTAL AUTO LEASING</strong> — Est. 2015</p>
             </div>
+            */}
           </div>
         </div>
       </section>

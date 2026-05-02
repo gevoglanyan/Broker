@@ -26,7 +26,6 @@ export default function Offers() {
             <a href="tel:4424484848<" style={{color: 'var(--white)', fontWeight: 600, textDecoration: 'none'}}>
               (442) 448-4848
             </a>
-            .
           </p>
         </div>
 

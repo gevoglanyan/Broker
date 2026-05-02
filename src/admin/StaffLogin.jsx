@@ -80,13 +80,15 @@ export default function StaffLogin() {
             </p>
           )}
 
+          <br />
+
           <button
             type="submit"
             className="btn btn-primary"
             style={{width:'100%', justifyContent:'center', padding:14, fontSize:15}}
             disabled={loading}
           >
-            {loading ? 'Signing in...' : 'Sign In →'}
+            {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
