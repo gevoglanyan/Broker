@@ -42,7 +42,6 @@ export default function Dashboard() {
           <p style={{color:'var(--muted)',fontSize:14}}>Loading...</p>
         ) : (
           <>
-            {/* Stats */}
             <div className="admin-stats-grid">
               {[
                 { label:'Credit Applications', value: stats.applications,                    action: () => navigate('/admin/clients') },
@@ -58,7 +57,6 @@ export default function Dashboard() {
               ))}
             </div>
 
-            {/* Recent applications */}
             <div className="admin-card">
               <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:24,flexWrap:'wrap',gap:12}}>
                 <h2 style={{fontFamily:'Bebas Neue',fontSize:26,letterSpacing:1}}>RECENT APPLICATIONS</h2>
@@ -66,7 +64,7 @@ export default function Dashboard() {
               </div>
 
               {recent.length === 0 ? (
-                <p style={{color:'var(--muted)',fontSize:14}}>No applications yet.</p>
+                <p style={{color:'var(--muted)',fontSize:14}}>No Applications Yet.</p>
               ) : (
                 <>
                   <div className="admin-table-wrap">

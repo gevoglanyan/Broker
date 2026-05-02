@@ -4,7 +4,7 @@ export default function Privacy() {
       <div className="form-hero">
         <div className="form-hero-eyebrow">Legal</div>
         <h1 className="form-hero-title">PRIVACY POLICY</h1>
-        <p className="form-hero-sub">Last updated: January 1, 2025</p>
+        <p className="form-hero-sub">Last updated: January 1, 2026</p>
       </div>
 
       <div className="form-container" style={{maxWidth: 760}}>
@@ -16,7 +16,7 @@ export default function Privacy() {
         }}>
 
           <Section title="1. Introduction">
-            <p>Elit Los Angeles ("we," "our," or "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. Please read this policy carefully. If you disagree with its terms, please discontinue use of our site.</p>
+            <p>Crystal Auto Leasing ("we," "our," or "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. Please read this policy carefully. If you disagree with its terms, please discontinue use of our site.</p>
           </Section>
 
           <Section title="2. Information We Collect">
@@ -94,13 +94,13 @@ export default function Privacy() {
           <Section title="13. Contact Us" last>
             <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
             <div style={{marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8}}>
-              <p><strong style={{color:'var(--white)'}}>Elit Los Angeles</strong></p>
-              <p>📞 <a href="tel:8186666066" style={{color:'var(--red-light)', textDecoration:'none'}}>
-                (818) 666-6066</a></p>
+              <p><strong style={{color:'var(--white)'}}>Crystal Auto Leasing</strong></p>
+              <p>📞 <a href="tel:4424484848" style={{color:'var(--red-light)', textDecoration:'none'}}>
+                (442) 448-4848</a></p>
               <p>✉️ <span style={{color:'var(--off-white)'}}>
-                info@elitla.com</span></p>
+                crystalautoleasing@gmail.com</span></p>
               <p>📍 <span style={{color:'var(--off-white)'}}>
-                14310 Victory Blvd, Los Angeles, CA 90049</span></p>
+                1907 W Burbank Blvd Unit B, Burbank, CA 91506</span></p>
             </div>
           </Section>
 

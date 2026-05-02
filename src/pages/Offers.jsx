@@ -13,8 +13,6 @@ export default function Offers() {
       </div>
 
       <div className="form-container" style={{maxWidth: 760}}>
-
-        {/* Contact CTA */}
         <div style={{
           background: 'var(--card2)',
           border: '1px solid var(--border)',
@@ -25,8 +23,8 @@ export default function Offers() {
         }}>
           <p style={{fontSize: 15, color: 'var(--off-white)', lineHeight: 1.7}}>
             Please contact our sales team during business hours at{' '}
-            <a href="tel:8186666066" style={{color: 'var(--white)', fontWeight: 600, textDecoration: 'none'}}>
-              (818) 666-6066
+            <a href="tel:4424484848<" style={{color: 'var(--white)', fontWeight: 600, textDecoration: 'none'}}>
+              (442) 448-4848
             </a>
             .
           </p>
@@ -34,7 +32,6 @@ export default function Offers() {
 
         <br /> <br />
 
-        {/* Disclaimer */}
         <div style={{
           background: 'var(--card)',
           border: '1px solid var(--border)',
@@ -70,7 +67,6 @@ export default function Offers() {
           </div>
         </div>
 
-        {/* Up to date notice */}
         <div style={{
           background: 'var(--card2)',
           border: '1px solid var(--border)',
@@ -91,7 +87,7 @@ export default function Offers() {
             </div>
           </div>
           <a
-            href="tel:8186666066"
+            href="tel:4424484848"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'var(--red)', color: '#fff',
@@ -102,7 +98,7 @@ export default function Offers() {
               flexShrink: 0,
             }}
           >
-            📞 (818) 666-6066
+            📞  (442) 448-4848
           </a>
         </div>
       </div>

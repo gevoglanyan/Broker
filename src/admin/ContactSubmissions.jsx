@@ -62,7 +62,6 @@ export default function ContactSubmissions() {
               ))}
             </div>
 
-            {/* Detail panel */}
             {selected && (
               <div style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,padding:28,alignSelf:'start'}}>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:24}}>

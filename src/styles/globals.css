@@ -3,41 +3,42 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Backgrounds ── */
   --black:  #000000;
   --dark:   #080808;
-  --card:   #111111;
-  --card2:  #161616;
-  --card3:  #1e1e1e;
+  --card:   #0f0f0f;
+  --card2:  #141414;
+  --card3:  #1a1a1a;
 
-  /* ── Borders ── */
-  --border:  #222222;
-  --border2: #2a2a2a;
+  --border:  #1f1f1f;
+  --border2: #272727;
   --border3: #333333;
 
-  /* ── Red brand ── */
-  --red:        #e8202a;
-  --red-mid:    #c91820;
-  --red-dark:   #a01018;
-  --red-light:  #f87171;
-  --red-glow:   rgba(232, 32, 42, 0.18);
-  --red-glow2:  rgba(232, 32, 42, 0.07);
+  --gold:        #c9a84c;
+  --gold-mid:    #b8922e;
+  --gold-dark:   #9a7820;
+  --gold-light:  #e2c97e;
+  --gold-pale:   #f0dfa0;
+  --gold-glow:   rgba(201, 168, 76, 0.18);
+  --gold-glow2:  rgba(201, 168, 76, 0.07);
 
-  /* Aliases — keeps all existing class names working */
-  --blue:       var(--red);
-  --blue-mid:   var(--red-mid);
-  --blue-dark:  var(--red-dark);
-  --blue-light: var(--red-light);
-  --blue-glow:  var(--red-glow);
-  --blue-glow2: var(--red-glow2);
+  --red:        var(--gold);
+  --red-mid:    var(--gold-mid);
+  --red-dark:   var(--gold-dark);
+  --red-light:  var(--gold-light);
+  --red-glow:   var(--gold-glow);
+  --red-glow2:  var(--gold-glow2);
+  --blue:       var(--gold);
+  --blue-mid:   var(--gold-mid);
+  --blue-dark:  var(--gold-dark);
+  --blue-light: var(--gold-light);
+  --blue-glow:  var(--gold-glow);
+  --blue-glow2: var(--gold-glow2);
 
-  /* ── Text ── */
-  --white:     #ffffff;
-  --off-white: #cccccc;
-  --muted:     #777777;
-  --muted2:    #555555;
+  --white:     #f5f0e8;
+  --off-white: #c8bfa8;
+  --muted:     #7a7060;
+  --muted2:    #4a4438;
 
-  /* ── Radii & timing ── */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -56,9 +57,6 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* ══════════════════════════════
-   BUTTONS
-══════════════════════════════ */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 13px 26px; border-radius: var(--radius-md);
@@ -69,14 +67,14 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 .btn-primary {
-  background: var(--red);
-  color: #fff;
-  box-shadow: 0 2px 12px rgba(232, 32, 42, 0.4);
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.35);
 }
 .btn-primary:hover {
-  background: var(--red-mid);
+  background: var(--gold-mid);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(232, 32, 42, 0.55);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.5);
 }
 .btn-primary:active { transform: translateY(0); }
 
@@ -86,31 +84,25 @@ body {
   border: 1px solid var(--border3);
 }
 .btn-outline:hover {
-  border-color: var(--white);
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--gold-light);
+  color: var(--gold-pale);
+  background: rgba(201, 168, 76, 0.05);
 }
 
-/* ══════════════════════════════
-   SECTION LABELS
-══════════════════════════════ */
 .section-label {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--red-light); margin-bottom: 12px;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px;
 }
 .section-label::before {
   content: ''; display: block; width: 20px; height: 2px;
-  background: var(--red-light); border-radius: 2px;
+  background: var(--gold-light); border-radius: 2px;
 }
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 52px; letter-spacing: 2px; line-height: 1; color: var(--white);
 }
 
-/* ══════════════════════════════
-   FORM PAGE
-══════════════════════════════ */
 .form-page { min-height: 100vh; padding: 68px 0 0; background: var(--dark); }
 
 .form-hero {
@@ -121,17 +113,17 @@ body {
 }
 .form-hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 100%, var(--red-glow2) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 100%, var(--gold-glow2) 0%, transparent 70%);
   pointer-events: none;
 }
 .form-hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--red-light); margin-bottom: 16px;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px;
 }
 .form-hero-eyebrow::before {
   content: ''; display: block; width: 18px; height: 2px;
-  background: var(--red-light); border-radius: 2px;
+  background: var(--gold-light); border-radius: 2px;
 }
 .form-hero-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -146,9 +138,6 @@ body {
 .form-container ul { list-style: none; padding-left: 0; margin: 0; }
 .form-container li { padding: 4px 0; }
 
-/* ══════════════════════════════
-   FORM FIELDS
-══════════════════════════════ */
 .form-section-title {
   font-size: 11px; font-weight: 700; letter-spacing: 3px;
   text-transform: uppercase; color: var(--muted);
@@ -176,18 +165,28 @@ input, select, textarea {
 input::placeholder, textarea::placeholder { color: var(--muted2); }
 input:hover, select:hover, textarea:hover { border-color: var(--border3); }
 input:focus, select:focus, textarea:focus {
-  border-color: var(--red);
+  border-color: var(--gold);
   background: var(--card3);
-  box-shadow: 0 0 0 3px var(--red-glow);
+  box-shadow: 0 0 0 3px var(--gold-glow);
 }
 select option { background: var(--card2); color: var(--white); }
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 40px;
 }
 textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+}
 
 .form-card {
   background: var(--card2); border: 1px solid var(--border);
@@ -196,9 +195,6 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 .form-submit { text-align: center; margin-top: 40px; }
 .form-note { font-size: 13px; color: var(--muted); margin-top: 14px; line-height: 1.5; }
 
-/* ══════════════════════════════
-   CAR CARDS
-══════════════════════════════ */
 .car-card {
   background: var(--card2); border: 1px solid var(--border);
   border-radius: var(--radius-lg); overflow: hidden;
@@ -207,10 +203,9 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 }
 .car-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-  border-color: var(--red);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+  border-color: var(--gold);
 }
-/* Text placeholder instead of image */
 .car-img-placeholder {
   height: 130px;
   background: var(--card);
@@ -221,7 +216,7 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 }
 .car-img-make {
   font-size: 10px; font-weight: 700;
-  color: var(--red-light); letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-light); letter-spacing: 3px; text-transform: uppercase;
 }
 .car-img-model {
   font-family: 'Bebas Neue', sans-serif;
@@ -229,13 +224,13 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 }
 .car-img-label {
   position: absolute; top: 10px; left: 12px;
-  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
   font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-  color: var(--off-white); padding: 3px 9px; border-radius: 20px;
-  text-transform: uppercase; border: 1px solid rgba(255,255,255,0.08);
+  color: var(--gold-light); padding: 3px 9px; border-radius: 20px;
+  text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2);
 }
 .car-info { padding: 18px 20px 20px; }
-.car-make { font-size: 10px; font-weight: 700; color: var(--red-light); letter-spacing: 2.5px; text-transform: uppercase; }
+.car-make { font-size: 10px; font-weight: 700; color: var(--gold-light); letter-spacing: 2.5px; text-transform: uppercase; }
 .car-model { font-size: 19px; font-weight: 700; margin: 4px 0 12px; color: var(--white); line-height: 1.2; }
 .car-price-row { display: flex; align-items: baseline; gap: 5px; }
 .price-from { font-size: 12px; color: var(--muted); }
@@ -245,12 +240,9 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 .car-meta span { font-size: 12px; color: var(--off-white); display: flex; align-items: center; gap: 5px; }
 .car-meta span::before {
   content: ''; display: block; width: 4px; height: 4px;
-  border-radius: 50%; background: var(--red-light); flex-shrink: 0;
+  border-radius: 50%; background: var(--gold-light); flex-shrink: 0;
 }
 
-/* ══════════════════════════════
-   WHY QUOTE CARD
-══════════════════════════════ */
 .why-image {
   background: var(--card2); border: 1px solid var(--border2);
   border-radius: var(--radius-xl); padding: 40px 32px;
@@ -258,21 +250,18 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
 }
 .why-image::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, var(--red-glow2) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 50% 0%, var(--gold-glow2) 0%, transparent 65%);
   pointer-events: none;
 }
 .big-number {
   font-family: 'Bebas Neue', sans-serif; font-size: 120px; line-height: 1;
-  letter-spacing: 4px; color: var(--red); opacity: 0.15;
+  letter-spacing: 4px; color: var(--gold); opacity: 0.15;
   margin-bottom: -36px; position: relative;
 }
 .why-quote { font-size: 19px; font-weight: 300; line-height: 1.7; color: var(--off-white); margin-bottom: 20px; position: relative; }
 .why-quote strong { color: var(--white); font-weight: 700; }
 .why-attribution { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; position: relative; }
 
-/* ══════════════════════════════
-   ANIMATIONS
-══════════════════════════════ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -286,9 +275,6 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
   .fade-up, .fade-up-1, .fade-up-2, .fade-up-3 { animation: none; }
 }
 
-/* ══════════════════════════════
-   TABLET  ≤ 900px
-══════════════════════════════ */
 @media (max-width: 900px) {
   .section-title { font-size: 42px; }
   .form-row, .form-row-3 { grid-template-columns: 1fr 1fr; }
@@ -298,9 +284,6 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
   .form-card { padding: 28px 24px; }
 }
 
-/* ══════════════════════════════
-   MOBILE  ≤ 600px
-══════════════════════════════ */
 @media (max-width: 600px) {
   .section-title { font-size: 36px; }
   .form-row, .form-row-3 { grid-template-columns: 1fr; }
@@ -312,4 +295,3 @@ textarea { resize: vertical; min-height: 120px; -webkit-appearance: none; }
   .btn { font-size: 15px; padding: 14px 24px; width: 100%; }
   .form-submit .btn { width: auto; }
 }
-

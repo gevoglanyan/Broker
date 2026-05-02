@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CryptoJS from 'crypto-js'
 import { supabase } from '../services/supabase'
 
 const EMPTY = {
@@ -6,14 +7,37 @@ const EMPTY = {
   address:'', timeAtAddress:'', housingStatus:'Own', monthlyHousing:'',
   employmentStatus:'Full-Time Employed', employer:'', jobTitle:'', timeAtJob:'',
   grossIncome:'', otherIncome:'', workPhone:'', employerAddress:'',
-  year:'', make:'', model:'', preferredPayment:'', downPayment:'', notes:''
+  year:'', make:'', model:'', preferredPayment:'', downPayment:'', notes:'',
+  consent: false, signature: ''
 }
+
+const ENCRYPT_KEY = import.meta.env.VITE_ENCRYPT_KEY || 'fallback-key-change-me'
+const encryptSSN = (ssn) => CryptoJS.AES.encrypt(ssn.replace(/\D/g,''), ENCRYPT_KEY).toString()
 
 const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())
 const isValidPhone = (v) => { const d = v.replace(/\D/g,''); return d.length===10||(d.length===11&&d[0]==='1') }
 const isValidSSN   = (v) => v.replace(/\D/g,'').length === 9
 
-// ── Moved outside component so it doesn't recreate on every render ──
+const fmtSSN = (v) => {
+  const d = v.replace(/\D/g,'').slice(0,9)
+  if (d.length <= 3) return d
+  if (d.length <= 5) return d.slice(0,3) + '-' + d.slice(3)
+  return d.slice(0,3) + '-' + d.slice(3,5) + '-' + d.slice(5)
+}
+
+const fmtPhone = (v) => {
+  const d = v.replace(/\D/g,'').slice(0,10)
+  if (d.length <= 3) return d
+  if (d.length <= 6) return '(' + d.slice(0,3) + ') ' + d.slice(3)
+  return '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6)
+}
+
+const fmtDollar = (v) => {
+  const d = v.replace(/[^0-9]/g, '')
+  if (!d) return ''
+  return '$' + d.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
 function F({ id, label, full, errors, children }) {
   return (
     <div className={`form-group${full ? ' full' : ''}`} id={`field-${id}`}>
@@ -34,8 +58,9 @@ export default function CreditApplication() {
   const [errors, setErrors]       = useState({})
   const [loading, setLoading]     = useState(false)
 
-  const set = (field) => (e) => {
-    setForm(f => ({...f, [field]: e.target.value}))
+  const set = (field, fmt) => (e) => {
+    const val = fmt ? fmt(e.target.value) : e.target.value
+    setForm(f => ({...f, [field]: val}))
     if (errors[field]) setErrors(prev => ({...prev, [field]: ''}))
   }
 
@@ -58,6 +83,12 @@ export default function CreditApplication() {
     if (!form.grossIncome.trim())       e.grossIncome = 'Required'
     if (form.workPhone && !isValidPhone(form.workPhone))
       e.workPhone = 'Enter a valid 10-digit number'
+    if (!form.consent)
+      e.consent = 'You must authorize Crystal Auto Leasing to run your credit'
+    if (!form.signature || !form.signature.trim())
+      e.signature = 'Please type your full name as your electronic signature'
+    else if (form.signature.trim().split(' ').length < 2)
+      e.signature = 'Please enter your full name (first and last)'
     return e
   }
 
@@ -70,11 +101,16 @@ export default function CreditApplication() {
       return
     }
     setLoading(true)
+
+    const encryptedSSN = encryptSSN(form.ssn)
+    const ssnLast4     = form.ssn.replace(/\D/g,'').slice(-4)
+
     const { error } = await supabase.from('credit_applications').insert([{
       first_name:        form.firstName,
       last_name:         form.lastName,
       date_of_birth:     form.dob || null,
-      ssn:               form.ssn,
+      ssn:               encryptedSSN,   
+      ssn_last4:         ssnLast4,       
       email:             form.email,
       phone:             form.phone,
       address:           form.address,
@@ -95,6 +131,8 @@ export default function CreditApplication() {
       preferred_payment: form.preferredPayment,
       down_payment:      form.downPayment,
       notes:             form.notes,
+      signature:         form.signature,
+      consent_given:     form.consent,
     }])
     setLoading(false)
     if (error) { setErrors({ submit: 'Something went wrong. Please try again.' }); return }
@@ -123,8 +161,6 @@ export default function CreditApplication() {
       </div>
 
       <div className="form-container">
-
-        {/* ── Personal Information ── */}
         <div className="form-card">
           <div className="form-section-title">Personal Information</div>
 
@@ -144,8 +180,14 @@ export default function CreditApplication() {
               <input type="date" value={form.dob} onChange={set('dob')} style={errStyle('dob')} />
             </F>
             <F id="ssn" label="Social Security Number *" errors={errors}>
-              <input value={form.ssn} onChange={set('ssn')}
-                placeholder="XXX-XX-XXXX" style={errStyle('ssn')} />
+              <input
+                value={form.ssn}
+                onChange={set('ssn', fmtSSN)}
+                placeholder="XXX-XX-XXXX"
+                inputMode="numeric"
+                maxLength={11}
+                style={errStyle('ssn')}
+              />
             </F>
           </div>
 
@@ -155,8 +197,16 @@ export default function CreditApplication() {
                 placeholder="john@example.com" autoComplete="email" style={errStyle('email')} />
             </F>
             <F id="phone" label="Phone Number *" errors={errors}>
-              <input type="tel" value={form.phone} onChange={set('phone')}
-                placeholder="(555) 000-0000" autoComplete="tel" style={errStyle('phone')} />
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={set('phone', fmtPhone)}
+                placeholder="(555) 000-0000"
+                inputMode="numeric"
+                maxLength={14}
+                autoComplete="tel"
+                style={errStyle('phone')}
+              />
             </F>
           </div>
 
@@ -181,12 +231,12 @@ export default function CreditApplication() {
             </div>
             <div className="form-group">
               <label>Monthly Housing Payment</label>
-              <input value={form.monthlyHousing} onChange={set('monthlyHousing')} placeholder="$1,200" />
+              <input value={form.monthlyHousing} onChange={set('monthlyHousing', fmtDollar)}
+                placeholder="$1,200" inputMode="numeric" />
             </div>
           </div>
         </div>
 
-        {/* ── Employment & Income ── */}
         <div className="form-card">
           <div className="form-section-title">Employment & Income</div>
 
@@ -220,19 +270,21 @@ export default function CreditApplication() {
 
           <div className="form-row">
             <F id="grossIncome" label="Gross Monthly Income *" errors={errors}>
-              <input value={form.grossIncome} onChange={set('grossIncome')}
-                placeholder="$5,000" style={errStyle('grossIncome')} />
+              <input value={form.grossIncome} onChange={set('grossIncome', fmtDollar)}
+                placeholder="$5,000" inputMode="numeric" style={errStyle('grossIncome')} />
             </F>
             <div className="form-group">
               <label>Other Monthly Income</label>
-              <input value={form.otherIncome} onChange={set('otherIncome')} placeholder="$0" />
+              <input value={form.otherIncome} onChange={set('otherIncome', fmtDollar)}
+                placeholder="$0" inputMode="numeric" />
             </div>
           </div>
 
           <div className="form-row">
             <F id="workPhone" label="Work Phone" errors={errors}>
-              <input type="tel" value={form.workPhone} onChange={set('workPhone')}
-                placeholder="(555) 000-0000" style={errStyle('workPhone')} />
+              <input type="tel" value={form.workPhone} onChange={set('workPhone', fmtPhone)}
+                placeholder="(555) 000-0000" inputMode="numeric" maxLength={14}
+                style={errStyle('workPhone')} />
             </F>
             <div className="form-group">
               <label>Employer Address</label>
@@ -241,7 +293,6 @@ export default function CreditApplication() {
           </div>
         </div>
 
-        {/* ── Vehicle of Interest ── */}
         <div className="form-card">
           <div className="form-section-title">Vehicle of Interest</div>
 
@@ -249,7 +300,8 @@ export default function CreditApplication() {
             <div className="form-group">
               <label>Year</label>
               <input value={form.year} onChange={set('year')}
-                placeholder={String(new Date().getFullYear())} />
+                placeholder={String(new Date().getFullYear())}
+                inputMode="numeric" maxLength={4} />
             </div>
             <div className="form-group">
               <label>Make</label>
@@ -264,11 +316,13 @@ export default function CreditApplication() {
           <div className="form-row">
             <div className="form-group">
               <label>Preferred Monthly Payment</label>
-              <input value={form.preferredPayment} onChange={set('preferredPayment')} placeholder="$350/mo" />
+              <input value={form.preferredPayment} onChange={set('preferredPayment', fmtDollar)}
+                placeholder="$350" inputMode="numeric" />
             </div>
             <div className="form-group">
               <label>Down Payment Available</label>
-              <input value={form.downPayment} onChange={set('downPayment')} placeholder="$0 – $3,000" />
+              <input value={form.downPayment} onChange={set('downPayment', fmtDollar)}
+                placeholder="$0" inputMode="numeric" />
             </div>
           </div>
 
@@ -276,15 +330,74 @@ export default function CreditApplication() {
             <div className="form-group full">
               <label>Additional Notes</label>
               <textarea value={form.notes} onChange={set('notes')}
-                placeholder="Any special requests, trade-in vehicle info, or questions..." />
+                placeholder="Any Special Requests, Trade-In Vehicle Info, or Questions..." />
             </div>
           </div>
         </div>
 
+        <div className="form-card">
+          <div className="form-section-title">Authorization & Signature</div>
+          <div style={{
+            background: 'var(--card)',
+            border: `1px solid ${errors.consent ? '#f87171' : 'var(--border)'}`,
+            borderRadius: 10,
+            padding: '20px',
+            marginBottom: 20,
+          }}>
+            <label style={{
+              display: 'flex', alignItems: 'flex-start', gap: 14,
+              cursor: 'pointer', textTransform: 'none', letterSpacing: 0,
+              fontSize: 14, color: 'var(--off-white)', lineHeight: 1.6, fontWeight: 'normal',
+            }}>
+              <input
+                type="checkbox"
+                checked={form.consent || false}
+                onChange={e => {
+                  setForm(f => ({...f, consent: e.target.checked}))
+                  if (errors.consent) setErrors(prev => ({...prev, consent: ''}))
+                }}
+              />
+              <span>
+                I authorize <strong style={{color:'var(--white)'}}>Crystal Auto Leasing</strong> to obtain my credit report and share my personal and financial information with lenders, banks, and dealerships as necessary to process my credit application. I understand this may result in a hard inquiry on my credit report.
+              </span>
+            </label>
+            {errors.consent && (
+              <p style={{color:'#f87171', fontSize:12, marginTop:10, marginLeft:34}}>{errors.consent}</p>
+            )}
+          </div>
+
+          <br />
+
+          <div id="field-signature">
+            <label style={{fontSize:12, fontWeight:700, color:'var(--muted)', letterSpacing:'0.5px', textTransform:'uppercase', display:'block', marginBottom:7}}>
+              Full Name (Electronic Signature) *
+            </label>
+            <input
+              value={form.signature || ''}
+              onChange={e => {
+                setForm(f => ({...f, signature: e.target.value}))
+                if (errors.signature) setErrors(prev => ({...prev, signature: ''}))
+              }}
+              placeholder="Type Your Full Legal Name to Sign"
+              style={{
+
+                fontSize: 16,
+          
+                color: 'var(--gold-light)',
+                ...(errors.signature ? { borderColor:'#f87171', boxShadow:'0 0 0 3px rgba(248,113,113,0.15)' } : {}),
+              }}
+            />
+            {errors.signature && (
+              <span style={{fontSize:12, color:'#f87171', marginTop:3, display:'block'}}>{errors.signature}</span>
+            )}
+            <p style={{fontSize:12, color:'var(--muted)', marginTop:8, lineHeight:1.5}}>
+              By typing your name, you're electronically signing this credit authorization and agree that this constitutes a legally binding signature.
+            </p>
+          </div>
+        </div>
+
         {errors.submit && (
-          <p style={{color:'#f87171',textAlign:'center',marginBottom:16,fontSize:14}}>
-            {errors.submit}
-          </p>
+          <p style={{color:'#f87171',textAlign:'center',marginBottom:16,fontSize:14}}>{errors.submit}</p>
         )}
         {Object.keys(errors).filter(k => k !== 'submit').length > 0 && (
           <p style={{color:'#f87171',textAlign:'center',marginBottom:16,fontSize:14}}>

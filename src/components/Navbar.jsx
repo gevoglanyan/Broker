@@ -48,7 +48,7 @@ export default function Navbar() {
     return (
       <nav className="navbar">
         <button className="logo" onClick={() => go('/admin')}>
-          <span style={{color:'var(--red)'}}>ELIT</span> Los Angeles <span className="admin-badge">ADMIN</span>
+          <span style={{color:'var(--yellow)'}}>Crystal Auto Leasing</span> <span className="admin-badge">ADMIN</span>
         </button>
         <div className="admin-nav-links">
           <button className="nav-link" onClick={() => go('/admin')}>Staff Dashboard</button>
@@ -65,7 +65,7 @@ export default function Navbar() {
     <>
       <nav className="navbar">
         <button className="logo" onClick={() => go('/')}>
-          <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> Los Angeles
+          <strong><span style={{color:'var(--yellow)'}}>Crystal Auto Leasing</span></strong>
         </button>
         <ul className="nav-links">
           {NAV_LINKS.map(({ path, label, cta }) => (

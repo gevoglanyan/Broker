@@ -120,8 +120,6 @@ export default function FAQs() {
       </div>
 
       <div className="form-container" style={{maxWidth: 760}}>
-
-        {/* FAQ accordion */}
         <div style={{
           background: 'var(--card2)',
           border: '1px solid var(--border)',
@@ -136,7 +134,6 @@ export default function FAQs() {
 
         <br />
 
-        {/* Still have questions CTA */}
         <div style={{
           background: 'var(--card)',
           border: '1px solid var(--border)',
@@ -158,7 +155,7 @@ export default function FAQs() {
             <br />
             
             <div style={{fontSize: 14, color: 'var(--muted)'}}>
-              Our team is available Mon–Fri 10AM–6PM.
+              Our team is available Mon–Fri 10AM – 6PM.
             </div>
           </div>
 
@@ -176,7 +173,7 @@ export default function FAQs() {
                 boxShadow: '0 2px 12px rgba(232,32,42,0.4)',
               }}
             >
-              📞 (818) 666-6066
+              📞 (442) 448-4848
             </a>
             <button
               className="btn btn-outline"

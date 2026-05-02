@@ -101,7 +101,6 @@ export default function Inventory() {
           <p style={{color:'var(--muted)', fontSize:14, textAlign:'center', padding:'40px 0'}}>Loading inventory...</p>
         ) : (
           <>
-            {/* New Vehicles */}
             {newCars.length > 0 && (
               <>
                 <SectionHeader eyebrow="Brand New" title="NEW VEHICLES" />
@@ -114,7 +113,6 @@ export default function Inventory() {
               </>
             )}
 
-            {/* Pre-Owned */}
             {usedCars.length > 0 && (
               <>
                 <SectionHeader eyebrow="Pre-Owned" title="PRE-OWNED VEHICLES" />
@@ -128,10 +126,12 @@ export default function Inventory() {
             )}
 
             {newCars.length === 0 && usedCars.length === 0 && (
-              <p style={{color:'var(--muted)', fontSize:14, textAlign:'center', padding:'40px 0'}}>No inventory available right now. Check back soon.</p>
+              <p style={{color:'var(--muted)', fontSize:14, textAlign:'center', padding:'40px 0'}}>No Inventory Available Right Now. Check Back Soon.</p>
             )}
           </>
         )}
+
+        <br />
 
         <div style={{textAlign:'center', marginTop:56, paddingTop:40, borderTop:'1px solid var(--border)'}}>
           <p style={{color:'var(--muted)', fontSize:14, marginBottom:20, lineHeight:1.6}}>

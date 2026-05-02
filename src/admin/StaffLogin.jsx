@@ -34,7 +34,7 @@ export default function StaffLogin() {
 
         <div style={{textAlign: 'center', marginBottom: 32}}>
           <div style={{fontFamily:'Bebas Neue', fontSize:30, letterSpacing:3, color:'var(--white)', marginBottom:6}}>
-            Elit Los Angeles
+            Crystal Auto Leasing
           </div>
           <div style={{fontSize:11, fontWeight:700, letterSpacing:3, textTransform:'uppercase', color:'var(--red)'}}>
             Staff Portal
@@ -56,7 +56,7 @@ export default function StaffLogin() {
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="you@elitla.com"
+              placeholder="crystal@autoleasing.com"
               required
               autoComplete="email"
             />

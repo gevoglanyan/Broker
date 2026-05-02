@@ -4,9 +4,9 @@ import { supabase } from '../services/supabase'
 const EMPTY = { firstName:'', lastName:'', email:'', phone:'', subject:"I'm interested in Leasing a Vehicle", message:'' }
 
 const CONTACT_BLOCKS = [
-  { icon:'📍', title:'Our Location', text:'14310 Victory Blvd\nLos Angeles, CA 90094' },
-  { icon:'📞', title:'Phone',        text:'(818) 666-6066' },
-  { icon:'✉️', title:'Email',        text:'info@elitla.com' },
+  { icon:'📍', title:'Our Location', text:'1907 W Burbank Blvd Unit B\nBurbank, CA 91506' },
+  { icon:'📞', title:'Phone',        text:'(442) 448-4848' },
+  { icon:'✉️', title:'Email',        text:'crystalautoleasing@gmail.com' },
 ]
 
 const HOURS = [

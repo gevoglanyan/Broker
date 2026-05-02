@@ -93,7 +93,6 @@ export default function InventoryManager() {
   return (
     <div style={{minHeight:'100vh', background:'var(--dark)', padding:'68px 0 0'}}>
       <div className="admin-wrap">
-
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:32,flexWrap:'wrap',gap:16}}>
           <div>
             <button className="btn btn-outline" style={{padding:'8px 18px',fontSize:13,marginBottom:16,minHeight:'unset'}} onClick={() => navigate('/admin')}>
@@ -105,7 +104,6 @@ export default function InventoryManager() {
           <button className="btn btn-primary" style={{alignSelf:'flex-end'}} onClick={openAdd}>+ Add Vehicle</button>
         </div>
 
-        {/* Stats */}
         <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16,marginBottom:32}} className="inv-stats-grid">
           {[{label:'Total Listings',value:inventory.length},{label:'Currently Listed',value:listed},{label:'Hidden',value:hidden}].map(s => (
             <div key={s.label} style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:12,padding:20}}>
@@ -115,7 +113,6 @@ export default function InventoryManager() {
           ))}
         </div>
 
-        {/* Add / Edit form */}
         {showForm && (
           <div style={{background:'var(--card2)',border:'1px solid var(--red)',borderRadius:14,padding:28,marginBottom:32}}>
             <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:24}}>
@@ -133,7 +130,7 @@ export default function InventoryManager() {
               <div className="form-group" style={{gridColumn:'1 / -1'}}><label>Meta Tags (comma separated)</label><input value={form.meta} onChange={set('meta')} placeholder="36 mo, 10K mi, $0 down" /></div>
               <div className="form-group" style={{display:'flex',flexDirection:'row',alignItems:'center',gap:12,paddingTop:8}}>
                 <input type="checkbox" id="available" checked={form.available} onChange={set('available')} style={{width:18,height:18,flexShrink:0}} />
-                <label htmlFor="available" style={{textTransform:'none',letterSpacing:0,fontSize:14,cursor:'pointer'}}>Show on public inventory page</label>
+                <label htmlFor="available" style={{textTransform:'none',letterSpacing:0,fontSize:14,cursor:'pointer'}}>Show on Public Inventory Page</label>
               </div>
             </div>
             <div style={{display:'flex',gap:12,marginTop:24,flexWrap:'wrap'}}>
@@ -145,7 +142,6 @@ export default function InventoryManager() {
           </div>
         )}
 
-        {/* Filters */}
         <div style={{display:'flex',gap:12,marginBottom:20,flexWrap:'wrap',alignItems:'center'}}>
           {['all','new','used'].map(f => (
             <button key={f} onClick={() => setFilter(f)} style={{background:filter===f?'var(--red)':'var(--card2)',border:`1px solid ${filter===f?'var(--red)':'var(--border)'}`,color:filter===f?'#fff':'var(--muted)',padding:'7px 16px',borderRadius:8,fontSize:13,fontWeight:600,cursor:'pointer',fontFamily:'Outfit, sans-serif',transition:'all 0.15s'}}>
@@ -157,7 +153,6 @@ export default function InventoryManager() {
 
         {loading ? <p style={{color:'var(--muted)',fontSize:14}}>Loading...</p> : (
           <>
-            {/* Desktop table */}
             <div className="admin-table-wrap" style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,overflow:'hidden'}}>
               <table style={{width:'100%',borderCollapse:'collapse'}}>
                 <thead>
@@ -169,7 +164,7 @@ export default function InventoryManager() {
                 </thead>
                 <tbody>
                   {filtered.length === 0 ? (
-                    <tr><td colSpan={6} style={{padding:'28px 20px',color:'var(--muted)',fontSize:14}}>No vehicles found.</td></tr>
+                    <tr><td colSpan={6} style={{padding:'28px 20px',color:'var(--muted)',fontSize:14}}>No Vehicles Found.</td></tr>
                   ) : filtered.map(v => (
                     <tr key={v.id} style={{opacity:v.available?1:0.5}}>
                       <td style={{padding:'14px 20px',borderBottom:'1px solid var(--border)'}}>
@@ -204,7 +199,6 @@ export default function InventoryManager() {
               </table>
             </div>
 
-            {/* Mobile cards */}
             <div className="admin-mobile-cards" style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,overflow:'hidden'}}>
               {filtered.length === 0 ? (
                 <p style={{padding:'24px 20px',color:'var(--muted)',fontSize:14}}>No vehicles found.</p>

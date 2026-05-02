@@ -50,20 +50,28 @@ export default function ClientDetail() {
   return (
     <div style={{minHeight:'100vh', background:'var(--dark)', padding:'68px 0 0'}}>
       <div className="admin-wrap">
-        <button className="btn btn-outline" style={{padding:'8px 18px',fontSize:13,marginBottom:28,minHeight:'unset'}} onClick={() => navigate('/admin/clients')}>
+        <button className="btn btn-outline" style={{padding:'8px 18px',fontSize:13,marginBottom:28,minHeight:'unset'}}
+          onClick={() => navigate('/admin/clients')}>
           Back to Clients
         </button>
 
         <div style={{marginBottom:32}}>
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>Credit Application</div>
-          <h1 style={{fontFamily:'Bebas Neue',fontSize:40,letterSpacing:2,lineHeight:1}}>{client.first_name} {client.last_name}</h1>
-          <p style={{fontSize:13,color:'var(--muted)',marginTop:6}}>Submitted {new Date(client.created_at).toLocaleString()}</p>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>
+            Credit Application
+          </div>
+          <h1 style={{fontFamily:'Bebas Neue',fontSize:40,letterSpacing:2,lineHeight:1}}>
+            {client.first_name} {client.last_name}
+          </h1>
+          <p style={{fontSize:13,color:'var(--muted)',marginTop:6}}>
+            Submitted {new Date(client.created_at).toLocaleString()}
+          </p>
         </div>
 
         <Section title="Personal Information">
           <Field label="Full Name"       value={`${client.first_name} ${client.last_name}`} />
           <Field label="Date of Birth"   value={client.date_of_birth} />
-          <Field label="SSN"             value={client.ssn} />
+          {/* SSN — show last 4 only, full SSN is AES encrypted */}
+          <Field label="SSN (Last 4)"    value={client.ssn_last4 ? `XXX-XX-${client.ssn_last4}` : '•••-••-••••'} />
           <Field label="Email"           value={client.email} />
           <Field label="Phone"           value={client.phone} />
           <Field label="Address"         value={client.address} />
@@ -97,6 +105,43 @@ export default function ClientDetail() {
             <p style={{fontSize:15,color:'var(--off-white)',lineHeight:1.7}}>{client.notes}</p>
           </div>
         )}
+
+        {/* Authorization */}
+        <div className="detail-section">
+          <h3 className="detail-section-title">Authorization</h3>
+          <div className="detail-fields">
+            <Field
+              label="Credit Authorization"
+              value={client.consent_given ? '✅ Authorized' : '❌ Not authorized'}
+            />
+            <Field
+              label="Electronic Signature"
+              value={client.signature || '—'}
+            />
+          </div>
+          {client.signature && (
+            <div style={{
+              marginTop: 16,
+              padding: '14px 20px',
+              background: 'var(--card)',
+              borderRadius: 8,
+              border: '1px solid var(--border)',
+            }}>
+              <div style={{fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'var(--muted)',marginBottom:8}}>
+                Signed As
+              </div>
+              <div style={{
+                fontFamily: 'Georgia, serif',
+                fontSize: 22,
+                fontStyle: 'italic',
+                color: 'var(--gold-light)',
+              }}>
+                {client.signature}
+              </div>
+            </div>
+          )}
+        </div>
+
       </div>
 
       <style>{`

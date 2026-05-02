@@ -4,14 +4,10 @@ import { supabase } from '../services/supabase'
 import './Home.css'
 
 const BRANDS = [
-  // Mainstream
   'Toyota','Honda','BMW','Mercedes-Benz','Lexus','Audi','Hyundai','Kia',
   'Volkswagen','Subaru','Jeep','Acura','Infiniti','Cadillac','Chevrolet',
   'Ford','GMC','Dodge','Ram','Nissan','Mazda','Buick','Lincoln','Volvo',
-  'Genesis','Rivian','Tesla',
-  // Luxury
-  'Porsche','Land Rover','Jaguar','Alfa Romeo','Maserati',
-  // Exotic
+  'Genesis', 'Porsche','Land Rover','Jaguar','Alfa Romeo','Maserati',
   'Ferrari','Lamborghini','Bentley','Rolls-Royce','McLaren','Aston Martin',
 ]
 
@@ -40,16 +36,17 @@ export default function Home() {
 
   return (
     <div>
-
-      {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-bg" />
         <div className="hero-grid-lines" />
         <div className="hero-inner">
-          <div>
-            <div className="hero-eyebrow fade-up">Premium Auto Leasing</div>
+        <div>
+          <div className="hero-eyebrow fade-up">Premium Auto Leasing</div>
             <h1 className="hero-title fade-up-1">DRIVE<br /><span>YOUR</span><br />DREAM</h1>
-            <p className="hero-subtitle fade-up-1"><strong><span style={{color:'var(--red)'}}>ELIT</span></strong>  Los Angeles connects you with the best lease deals across all major brands — transparent pricing, fast approvals, and white-glove service from start to finish.</p>
+            <p className="hero-subtitle fade-up-1">
+            <br />
+            <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> is your trusted luxury auto broker in Los Angeles. We connect you with the best lease deals across all major brands — from everyday commuters to exotic supercars.</p>
+            <br />
             <div className="hero-btns fade-up-2">
               <button className="btn btn-primary" onClick={() => navigate('/inventory')}>Browse Inventory ›</button>
               <button className="btn btn-outline" onClick={() => navigate('/credit')}>Apply for Credit</button>
@@ -82,7 +79,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BRANDS ── */}
       <div className="brands-section">
         <div className="brands-inner">
           <div className="brands-label">Top Makes We Carry</div>
@@ -92,7 +88,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── FEATURED — live from Supabase ── */}
       {featured.length > 0 && (
         <div className="inventory-strip">
           <div className="section-header">
@@ -129,11 +124,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* ── WHY US ── */}
       <section className="why-section">
         <div className="why-inner">
           <div className="section-label">Why Us</div>
-          <div className="section-title">THE <strong><span style={{color:'var(--red)'}}>ELIT</span></strong> LOS ANGELES DIFFERENCE</div>
+          <div className="section-title">THE <strong><span style={{color:'var(--red)'}}>CRYSTAL AUTO LEASING</span></strong> DIFFERENCE</div>
           <div className="why-grid">
             <div className="why-features">
               {FEATURES.map(f => (
@@ -146,23 +140,31 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <br />
             <div className="why-image">
               <div className="big-number">10</div>
               <p className="why-quote">Over <strong>10 years</strong> putting customers in the driver's seat at prices they can feel good about.</p>
-              <p className="why-attribution"><strong><span style={{color:'var(--red)'}}>ELIT</span></strong>  Los Angeles — Est. 2015</p>
+              <p className="why-attribution"><strong>CRYSTAL AUTO LEASING</strong> — Est. 2015</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
+      <br />
+
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-brand">
-              <div className="footer-logo"><strong><span style={{color:'var(--red)'}}>ELIT</span></strong>  Los Angeles</div>
-              <p className="footer-tagline">Your trusted auto leasing partner. We make driving your dream car simple, affordable, and stress-free.</p>
-              <p className="footer-tagline" style={{marginTop:10}}>From everyday commuters to exotic supercars — we source any vehicle, new or pre-owned, and deliver the best deal straight to you.</p>
+              <div className="footer-logo">
+                <strong><span style={{color:'var(--gold)'}}>CRYSTAL AUTO LEASING</span></strong>
+              </div>
+              <p className="footer-tagline" style={{maxWidth:'100%'}}>
+                Your trusted auto leasing partner. We make driving your dream car simple, affordable, and stress-free.
+              </p>
+              <p className="footer-tagline" style={{marginTop:10, maxWidth:'100%'}}>
+                From everyday commuters to exotic supercars — we source any vehicle, new or pre-owned, and deliver the best deal straight to you.
+              </p>
             </div>
             <div className="footer-col">
               <h4>Quick Links</h4>
@@ -187,11 +189,11 @@ export default function Home() {
             <div className="footer-col">
               <h4>Contact</h4>
               <ul>
-                <li><span>(818) 666-6066</span></li>
-                <li><span>info@elitla.com</span></li>
+                <li><span>(442) 448-4848</span></li>
+                <li><span>crystalautoleasing@gmail.com</span></li>
                 <br />
-                <li><span>14310 Victory Blvd,</span></li>
-                <li><span>Los Angeles, CA 91401</span></li>
+                <li><span>1907 W Burbank Blvd Unit B</span></li>
+                <li><span>Burbank, CA 91506</span></li>
                 <br />
                 <li><span>Mon – Fri: 10 AM – 6 PM</span></li>
                 <li><span>Sat & Sun: Appointment Only</span></li>
@@ -199,7 +201,7 @@ export default function Home() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p className="footer-copy">© {YEAR} ELIT Los Angeles. All Rights Reserved.</p>
+            <p className="footer-copy">© {YEAR} Crystal Auto Leasing. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
