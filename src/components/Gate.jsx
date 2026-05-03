@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const SITE_PASSWORD = 'FclpA#iRChv$c*3'
+const SITE_PASSWORD = import.meta.env.VITE_SITE_PASSWORD
 
 export default function SiteGate({ children }) {
   const [unlocked, setUnlocked] = useState(
@@ -49,7 +49,6 @@ export default function SiteGate({ children }) {
         textAlign: 'center',
         animation: shake ? 'shake 0.4s ease' : 'none',
       }}>
-        {/* Logo */}
         <div style={{
           fontFamily: 'Bebas Neue, sans-serif',
           fontSize: 28,
@@ -57,8 +56,11 @@ export default function SiteGate({ children }) {
           color: 'var(--white)',
           marginBottom: 8,
         }}>
-          <span style={{color:'var(--gold)'}}>CRYSTAL</span> AUTO LEASING
+            CRYSTAL AUTO LEASING
         </div>
+
+        <br />
+        
         <p style={{fontSize:13, color:'var(--muted)', marginBottom:36, lineHeight:1.5}}>
           This site is currently private.<br />Enter the access code to continue.
         </p>
@@ -83,6 +85,8 @@ export default function SiteGate({ children }) {
         {error && (
           <p style={{fontSize:13, color:'#f87171', marginBottom:16}}>Incorrect code. Try again.</p>
         )}
+
+        <br />
 
         <button
           className="btn btn-primary"
