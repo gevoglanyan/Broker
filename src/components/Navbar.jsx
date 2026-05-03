@@ -5,11 +5,13 @@ import './Navbar.css'
 
 const NAV_LINKS = [
   { path: '/',            label: 'Home' },
-  { path: '/inventory',   label: 'Vehicle Inventory' },
   { path: '/offers',      label: 'Monthly Offers' },
   { path: '/faqs',        label: 'FAQs' },
   { path: '/about',       label: 'About Us' },
   { path: '/contact',     label: 'Contact Us' },
+
+  {/* { path: '/inventory',   label: 'Vehicle Inventory' }, */},
+
   { path: '/credit',      label: 'Credit Application' , cta: true },
 ]
 
@@ -54,7 +56,7 @@ export default function Navbar() {
           <button className="nav-link" onClick={() => go('/admin')}>Staff Dashboard</button>
           <button className="nav-link" onClick={() => go('/admin/clients')}>View Clients</button>
           <button className="nav-link" onClick={() => go('/admin/contacts')}>View Contact Submission</button>
-          <button className="nav-link" onClick={() => go('/admin/inventory')}>Manage Vehicle Inventory</button>
+          {/*<button className="nav-link" onClick={() => go('/admin/inventory')}>Manage Vehicle Inventory</button>*/}
           <button className="nav-link nav-cta" onClick={logout}>Sign Out</button>
         </div>
       </nav>

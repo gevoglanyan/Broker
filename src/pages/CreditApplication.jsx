@@ -128,6 +128,7 @@ export default function CreditApplication() {
       vehicle_year:      form.year,
       vehicle_make:      form.make,
       vehicle_model:     form.model,
+      agent_name:        form.agentName,
       preferred_payment: form.preferredPayment,
       down_payment:      form.downPayment,
       notes:             form.notes,
@@ -310,6 +311,13 @@ export default function CreditApplication() {
             <div className="form-group">
               <label>Model</label>
               <input value={form.model} onChange={set('model')} placeholder="Camry" />
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group full">
+              <label>Lease Advisor / Agent Name</label>
+              <input value={form.agentName} onChange={set('agentName')} placeholder="Agent Name (If Applicable)" />
             </div>
           </div>
 

@@ -171,6 +171,7 @@ export default function ClientDetail() {
           <Field label="Year"              value={client.vehicle_year} />
           <Field label="Make"              value={client.vehicle_make} />
           <Field label="Model"             value={client.vehicle_model} />
+          <Field label="Agent Name"        value={client.agent_name} />
           <Field label="Preferred Payment" value={client.preferred_payment} />
           <Field label="Down Payment"      value={client.down_payment} />
         </Section>

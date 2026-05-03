@@ -32,7 +32,6 @@ export default function Dashboard() {
   return (
     <div style={{minHeight:'100vh', background:'var(--dark)', padding:'68px 0 0'}}>
       <div className="admin-wrap">
-
         <div style={{marginBottom:32}}>
           <div style={{fontSize:11,fontWeight:700,letterSpacing:3,textTransform:'uppercase',color:'var(--red)',marginBottom:8}}>Admin</div>
           <h1 style={{fontFamily:'Bebas Neue',fontSize:44,letterSpacing:2}}>DASHBOARD</h1>
@@ -44,10 +43,9 @@ export default function Dashboard() {
           <>
             <div className="admin-stats-grid">
               {[
-                { label:'Credit Applications', value: stats.applications,                    action: () => navigate('/admin/clients') },
-                { label:'Contact Submissions',  value: stats.contacts,                        action: () => navigate('/admin/contacts') },
-                { label:'Total Leads',          value: stats.applications + stats.contacts,   action: null },
-                { label:'Manage Vehicle Inventory',     value: '→',                                   action: () => navigate('/admin/inventory') },
+                { label:'Total Leads', value: stats.applications + stats.contacts, action: null },
+                { label:'Credit Applications', value: stats.applications, action: () => navigate('/admin/clients') },
+                { label:'Contact Submissions', value: stats.contacts, action: () => navigate('/admin/contacts') },
               ].map(stat => (
                 <div key={stat.label} className="admin-stat-card" style={{cursor: stat.action ? 'pointer' : 'default'}} onClick={stat.action || undefined}>
                   <div style={{fontSize:44,fontFamily:'Bebas Neue',letterSpacing:1,color:'#fff',lineHeight:1}}>{stat.value}</div>
@@ -56,6 +54,10 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
+
+            {/* Paste This Under Contact Submissions Inside "Admin Stats Grid" */}
+
+            {/* { label:'Manage Vehicle Inventory', value: '→', action: () => navigate('/admin/inventory') }, */}
 
             <div className="admin-card">
               <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:24,flexWrap:'wrap',gap:12}}>

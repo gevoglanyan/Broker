@@ -49,9 +49,12 @@ export default function Home() {
             </p>
             <br />
             <div className="hero-btns fade-up-2">
-              <button className="btn btn-primary" onClick={() => navigate('/inventory')}>Browse Inventory</button>
-              <button className="btn btn-outline" onClick={() => navigate('/credit')}>Credit Application</button>
+              <button className="btn btn-primary" onClick={() => navigate('/credit')}>Credit Application</button>
+              <button className="btn btn-outline" onClick={() => navigate('/contact')}>Contact Us</button>
             </div>
+          
+            {/*
+            
             <div className="hero-stats fade-up-3">
               <div>
                 <div className="stat-num">500<span>+</span></div>
@@ -61,11 +64,15 @@ export default function Home() {
                 <div className="stat-num">12<span>K+</span></div>
                 <div className="stat-label">Happy Customers</div>
               </div>
+              
               <div>
                 <div className="stat-num">10<span>+</span></div>
                 <div className="stat-label">Years in Business</div>
               </div>
             </div>
+            
+            */}
+
           </div>
 
           <div className="hero-statement fade-up-1">
@@ -89,6 +96,8 @@ export default function Home() {
         </div>
       </div>
 
+      {/*
+
       {featured.length > 0 && (
         <div className="inventory-strip">
           <div className="section-header">
@@ -97,7 +106,7 @@ export default function Home() {
               <div className="section-title">FEATURED LEASES</div>
             </div>
             <button className="btn btn-outline" style={{padding:'9px 20px',fontSize:13}} onClick={() => navigate('/inventory')}>
-              View All →
+              View All
             </button>
           </div>
           <div className="cars-grid">
@@ -137,6 +146,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      */}
 
       <section className="why-section">
         <div className="why-inner">
@@ -190,9 +201,9 @@ export default function Home() {
               <h4>Quick Links</h4>
               <ul>
                 <li><button onClick={() => navigate('/')}>Home</button></li>
-                <li><button onClick={() => navigate('/inventory')}>Vehicle Inventory</button></li>
-                <li><button onClick={() => navigate('/faqs')}>FAQs</button></li>
+                {/*<li><button onClick={() => navigate('/inventory')}>Vehicle Inventory</button></li>*/}
                 <li><button onClick={() => navigate('/offers')}>Monthly Offers</button></li>
+                <li><button onClick={() => navigate('/faqs')}>FAQs</button></li>
                 <li><button onClick={() => navigate('/credit')}>Credit Application</button></li>
               </ul>
             </div>
