@@ -72,7 +72,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <button className="logo" onClick={() => go('/admin')}>
+        <button className="logo" onClick={() => go('/')}>
           <span style={{color:'var(--gold)'}}>CRYSTAL</span>
           <span style={{color:'var(--white)'}}> AUTO LEASING</span>
         </button>
