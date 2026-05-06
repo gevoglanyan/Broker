@@ -15,6 +15,13 @@ const HOURS = [
   ['Sunday',          'By Appointment'],
 ]
 
+const EXPECT = [
+  { icon:'⚡', title:'Fast Response',    desc:'We respond to all messages within a few hours during business hours — often sooner.' },
+  { icon:'🤝', title:'Real Advisor',     desc:'You\'ll speak directly with a lease advisor, not a bot or a call center.' },
+  { icon:'🔍', title:'No Obligation',    desc:'Reaching out is free with zero pressure. We\'re here to answer your questions first.' },
+  { icon:'🔒', title:'100% Private',     desc:'Your information is never sold or shared outside of processing your request.' },
+]
+
 const fmtPhone = (v) => {
   const d = v.replace(/\D/g,'').slice(0,10)
   if (d.length <= 3) return d
@@ -74,6 +81,22 @@ export default function Contact() {
         <p className="form-hero-sub">We'd Love to Hear From You. Reach Out and We'll Respond Quickly</p>
       </div>
 
+      <div style={{background:'var(--black)',borderTop:'1px solid var(--border)',borderBottom:'1px solid var(--border)',padding:'40px 48px'}} className="expect-section">
+        <div style={{maxWidth:1200,margin:'0 auto',display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:24}} className="expect-grid">
+          {EXPECT.map(e => (
+            <div key={e.title} style={{display:'flex',gap:14,alignItems:'flex-start'}}>
+              <div style={{width:38,height:38,borderRadius:9,background:'rgba(201,168,76,0.1)',border:'1px solid rgba(201,168,76,0.2)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:16,flexShrink:0}}>
+                {e.icon}
+              </div>
+              <div>
+                <div style={{fontSize:13,fontWeight:700,color:'var(--white)',marginBottom:4}}>{e.title}</div>
+                <p style={{fontSize:12,color:'var(--muted)',lineHeight:1.6}}>{e.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <br />
 
       <div className="contact-wrap">
@@ -106,7 +129,7 @@ export default function Contact() {
             </table>
           </div>
 
-          <br /> <br />
+          <br /><br />
 
           <div style={{marginTop:32}}>
             <div style={{borderRadius:12,overflow:'hidden',border:'1px solid var(--border)',height:220}}>
@@ -115,12 +138,12 @@ export default function Contact() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.4763563305!2d-118.34248492428638!3d34.178220000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c295c6b8f7a5e7%3A0xa4f3c0e1b2d94c6a!2s1907+W+Burbank+Blvd%2C+Burbank%2C+CA+91506!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
-                style={{border:0, display:'block', filter:'invert(90%) hue-rotate(180deg)'}}
+                style={{border:0,display:'block',filter:'invert(90%) hue-rotate(180deg)'}}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </div> 
+            </div>
 
             <br />
 
@@ -195,6 +218,13 @@ export default function Contact() {
               {loading ? 'Sending...' : 'Send Message'}
             </button>
           </div>
+
+          <div style={{marginTop:20,paddingTop:20,borderTop:'1px solid var(--border)',textAlign:'center'}}>
+            <p style={{fontSize:13,color:'var(--muted)',marginBottom:10}}>Prefer to talk? Call us directly.</p>
+            <a href="tel:4424484848" style={{display:'inline-flex',alignItems:'center',gap:8,color:'var(--gold-light)',textDecoration:'none',fontWeight:700,fontSize:15}}>
+              📞 (442) 448-4848
+            </a>
+          </div>
         </div>
 
       </div>
@@ -220,7 +250,11 @@ export default function Contact() {
         .hours-table tr:last-child td { border-bottom:none; }
         .contact-form-card { margin-bottom:0; }
 
-        @media (max-width:900px) { .contact-wrap { padding:40px 24px 64px; gap:40px; } }
+        @media (max-width:900px) {
+          .contact-wrap { padding:40px 24px 64px; gap:40px; }
+          .expect-section { padding:32px 24px !important; }
+          .expect-grid { grid-template-columns:1fr 1fr !important; gap:20px !important; }
+        }
 
         @media (max-width:768px) {
           .contact-wrap { grid-template-columns:1fr; gap:0; padding:0 0 56px; }
@@ -230,6 +264,8 @@ export default function Contact() {
           .contact-icon { width:40px; height:40px; font-size:16px; }
           .hours-section { margin-top:24px; padding-top:24px; }
           .hours-day, .hours-time { font-size:14px; padding:10px 0; }
+          .expect-section { padding:28px 20px !important; }
+          .expect-grid { grid-template-columns:1fr !important; gap:16px !important; }
         }
       `}</style>
     </div>

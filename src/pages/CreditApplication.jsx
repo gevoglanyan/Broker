@@ -8,7 +8,7 @@ const EMPTY = {
   employmentStatus:'Full-Time Employed', employer:'', jobTitle:'', timeAtJob:'',
   grossIncome:'', otherIncome:'', workPhone:'', employerAddress:'',
   year:'', make:'', model:'', preferredPayment:'', downPayment:'', notes:'',
-  consent: false, signature: ''
+  agentName:'', consent: false, signature: ''
 }
 
 const ENCRYPT_KEY = import.meta.env.VITE_ENCRYPT_KEY || 'fallback-key-change-me'
@@ -51,6 +51,8 @@ function F({ id, label, full, errors, children }) {
     </div>
   )
 }
+
+const STEPS = ['Personal Info', 'Employment', 'Vehicle', 'Authorization']
 
 export default function CreditApplication() {
   const [form, setForm]           = useState(EMPTY)
@@ -109,8 +111,8 @@ export default function CreditApplication() {
       first_name:        form.firstName,
       last_name:         form.lastName,
       date_of_birth:     form.dob || null,
-      ssn:               encryptedSSN,   
-      ssn_last4:         ssnLast4,       
+      ssn:               encryptedSSN,
+      ssn_last4:         ssnLast4,
       email:             form.email,
       phone:             form.phone,
       address:           form.address,
@@ -148,6 +150,20 @@ export default function CreditApplication() {
         <p style={{color:'var(--off-white)',fontSize:16,maxWidth:440,lineHeight:1.6,marginTop:4}}>
           Thank you for your credit application. A lease advisor will review your information and contact you within 1 business day.
         </p>
+        <div style={{marginTop:24,padding:'24px 28px',background:'var(--card2)',border:'1px solid var(--border)',borderRadius:14,maxWidth:420,textAlign:'left'}}>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'var(--gold)',marginBottom:16}}>What Happens Next</div>
+          {[
+            'Your application is reviewed by a lease advisor',
+            'We verify your information and assess financing options',
+            'An advisor contacts you within 1 business day',
+            'We present your best available lease options',
+          ].map((step, i) => (
+            <div key={i} style={{display:'flex',gap:12,alignItems:'flex-start',marginBottom:12}}>
+              <span style={{fontFamily:'Bebas Neue,sans-serif',fontSize:18,color:'var(--gold)',flexShrink:0,lineHeight:1,marginTop:1}}>{String(i+1).padStart(2,'0')}</span>
+              <p style={{fontSize:13,color:'var(--off-white)',lineHeight:1.6}}>{step}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -161,9 +177,45 @@ export default function CreditApplication() {
         <p className="form-hero-sub">Complete this Form and a Lease Advisor Will Contact You</p>
       </div>
 
+      <div style={{background:'var(--black)',borderBottom:'1px solid var(--border)',padding:'16px 48px'}} className="trust-strip">
+        <div style={{maxWidth:860,margin:'0 auto',display:'flex',gap:28,alignItems:'center',flexWrap:'wrap',justifyContent:'center'}}>
+          {[
+            { icon:'🔒', text:'AES-256 Encrypted' },
+            { icon:'🛡️', text:'SSN Never Stored in Plain Text' },
+            { icon:'🚫', text:'No Third-Party Data Sharing' },
+            { icon:'⚡', text:'Response Within 1 Business Day' },
+          ].map(t => (
+            <div key={t.text} style={{display:'flex',gap:8,alignItems:'center'}}>
+              <span style={{fontSize:14}}>{t.icon}</span>
+              <span style={{fontSize:12,color:'var(--muted)',fontWeight:500}}>{t.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <br /> <br />
+
+      <div style={{background:'var(--dark)',borderBottom:'1px solid var(--border)',padding:'16px 48px'}} className="progress-strip">
+        <div style={{maxWidth:860,margin:'0 auto',display:'flex',gap:0,alignItems:'center'}}>
+          {STEPS.map((step, i) => (
+            <div key={step} style={{display:'flex',alignItems:'center',flex:1}}>
+              <div style={{display:'flex',alignItems:'center',gap:8}}>
+                <div style={{width:24,height:24,borderRadius:'50%',background:'rgba(201,168,76,0.15)',border:'1px solid rgba(201,168,76,0.3)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:11,fontWeight:700,color:'var(--gold-light)',flexShrink:0}}>
+                  {i + 1}
+                </div>
+                <span style={{fontSize:12,color:'var(--muted)',fontWeight:500,whiteSpace:'nowrap'}}>{step}</span>
+              </div>
+              {i < STEPS.length - 1 && (
+                <div style={{flex:1,height:1,background:'var(--border)',margin:'0 12px'}} />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="form-container">
         <div className="form-card">
-          <div className="form-section-title">Personal Information</div>
+          <div className="form-section-title">1 — Personal Information</div>
 
           <div className="form-row">
             <F id="firstName" label="First Name *" errors={errors}>
@@ -239,7 +291,7 @@ export default function CreditApplication() {
         </div>
 
         <div className="form-card">
-          <div className="form-section-title">Employment & Income</div>
+          <div className="form-section-title">2 — Employment & Income</div>
 
           <div className="form-row">
             <div className="form-group">
@@ -295,7 +347,7 @@ export default function CreditApplication() {
         </div>
 
         <div className="form-card">
-          <div className="form-section-title">Vehicle of Interest</div>
+          <div className="form-section-title">3 — Vehicle of Interest</div>
 
           <div className="form-row form-row-3">
             <div className="form-group">
@@ -344,7 +396,7 @@ export default function CreditApplication() {
         </div>
 
         <div className="form-card">
-          <div className="form-section-title">Authorization & Signature</div>
+          <div className="form-section-title">4 — Authorization & Signature</div>
           <div style={{
             background: 'var(--card)',
             border: `1px solid ${errors.consent ? '#f87171' : 'var(--border)'}`,
@@ -388,9 +440,7 @@ export default function CreditApplication() {
               }}
               placeholder="Type Your Full Legal Name to Sign"
               style={{
-
                 fontSize: 16,
-          
                 color: 'var(--gold-light)',
                 ...(errors.signature ? { borderColor:'#f87171', boxShadow:'0 0 0 3px rgba(248,113,113,0.15)' } : {}),
               }}
@@ -416,13 +466,21 @@ export default function CreditApplication() {
         <div className="form-submit">
           <button className="btn btn-primary" style={{padding:'14px 52px',fontSize:15}}
             onClick={handleSubmit} disabled={loading}>
-            {loading ? 'Submitting...' : 'Submit Application →'}
+            {loading ? 'Submitting...' : 'Submit Application'}
           </button>
           <br /><br />
           <p className="form-note">Your information is encrypted and secure. We do not share personal data with third parties.</p>
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width:768px) {
+          .trust-strip { padding:14px 20px !important; }
+          .progress-strip { padding:12px 20px !important; }
+          .progress-strip > div { flex-wrap:wrap; gap:12px !important; }
+        }
+      `}</style>
     </div>
   )
 }

@@ -53,8 +53,7 @@ export default function Terms() {
           </Section>
 
           <Section title="7. Accuracy of Information">
-            <p>We strive to ensure the information on our website is accurate and up to date. However, we make no warranties or representations regarding the accuracy, completeness, or timeliness of any content on our site. We encourage you to contact us directly at <a href="tel:8186666066" style={{color:'var(--red-light)'}}>
-              (818) 666-6066</a> to confirm current offers and details.</p>
+            <p>We strive to ensure the information on our website is accurate and up to date. However, we make no warranties or representations regarding the accuracy, completeness, or timeliness of any content on our site. We encourage you to contact us directly at <a href="tel:4424484848" style={{color:'var(--gold-light)', textDecoration:'none'}}>(442) 448-4848</a> to confirm current offers and details.</p>
           </Section>
 
           <Section title="8. Intellectual Property">
@@ -85,12 +84,9 @@ export default function Terms() {
             <p>If you have any questions about these Terms of Use, please contact us:</p>
             <div style={{marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8}}>
               <p><strong style={{color:'var(--white)'}}>Crystal Auto Leasing</strong></p>
-              <p>📞 <a href="tel:4424484848" style={{color:'var(--red-light)', textDecoration:'none'}}>
-                (442) 448-4848</a></p>
-              <p>✉️ <span style={{color:'var(--off-white)'}}>
-                crystalautoleasing@gmail.com</span></p>
-              <p>📍 <span style={{color:'var(--off-white)'}}>
-                1907 W Burbank Blvd Unit B, Burbank, CA 91506</span></p>
+              <p>📞 <a href="tel:4424484848" style={{color:'var(--gold-light)', textDecoration:'none'}}>(442) 448-4848</a></p>
+              <p>✉️ <span style={{color:'var(--off-white)'}}>crystalautoleasing@gmail.com</span></p>
+              <p>📍 <span style={{color:'var(--off-white)'}}>1907 W Burbank Blvd Unit B, Burbank, CA 91506</span></p>
             </div>
           </Section>
 

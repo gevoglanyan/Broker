@@ -29,19 +29,18 @@ export default function About() {
       <div className="about-wrap">
         <div className="about-story">
           <div className="about-body">
-            <p><strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong> is a <strong>family-owned and operated</strong> auto brokerage built on a foundation of trust, transparency, and genuine care for every customer we serve.</p>
-            <p>Founded by a family that has been passionate about cars for generations, we started <strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong> with one goal in mind: bring the same honesty and dedication we'd want for our own family to every single deal we make.</p>
+            <p><strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> is a <strong>family-owned and operated</strong> auto brokerage built on a foundation of trust, transparency, and genuine care for every customer we serve.</p>
+            <p>Founded by a family that has been passionate about cars for generations, we started <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> with one goal in mind: bring the same honesty and dedication we'd want for our own family to every single deal we make.</p>
             <p>We're not a traditional dealership. As independent auto brokers, we work <strong>for you</strong> — not the manufacturer. That means we shop across our network of dealers to find you the best possible deal on any make or model, new or pre-owned.</p>
-            <p>When you work with <strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong>, you're not just a number. You're working directly with people who take pride in what they do and genuinely want to see you drive away happy. That's the <strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong> difference — and it's been that way since day one.</p>
+            <p>When you work with <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong>, you're not just a number. You're working directly with people who take pride in what they do and genuinely want to see you drive away happy. That's the <strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong> difference — and it's been that way since day one.</p>
           </div>
           <div className="why-image">
             <div style={{fontSize:52,marginBottom:14}}>🏆</div>
-            {/*<p className="why-quote" style={{fontSize:17}}>Voted <strong>#1 Auto Broker</strong> in our region three years running by our customers.</p>*/}
-            <p className="why-attribution" style={{marginTop:18}}><strong><span style={{color:'var(--red)'}}>Crystal Auto Leasing</span></strong></p>
+            <br />
+            <p className="why-attribution" style={{marginTop:18}}><strong><span style={{color:'var(--gold)'}}>Crystal Auto Leasing</span></strong></p>
           </div>
         </div>
 
-        <br /> <br />
 
         <div className="section-label" style={{marginBottom:20}}>Our Values</div>
         <div className="values-grid">
@@ -54,7 +53,7 @@ export default function About() {
           ))}
         </div>
 
-        <br /> <br />
+        <br /><br />
 
         <div className="section-label" style={{marginBottom:20,marginTop:56}}>The Team</div>
         <div className="team-grid">
@@ -68,120 +67,77 @@ export default function About() {
             </div>
           ))}
         </div>
+
+        <div style={{marginTop:64,background:'var(--card)',border:'1px solid var(--border)',borderLeft:'3px solid var(--gold)',borderRadius:14,padding:'32px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:24,flexWrap:'wrap'}}>
+          <div>
+            <div style={{fontFamily:'Bebas Neue,sans-serif',fontSize:28,letterSpacing:2,color:'var(--white)',marginBottom:6}}>
+              WORK WITH US
+            </div>
+            <p style={{fontSize:14,color:'var(--muted)',lineHeight:1.6,maxWidth:400}}>
+              Ready to get started? Apply for credit online or give us a call — a real advisor picks up every time.
+            </p>
+          </div>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <a href="/credit" style={{display:'inline-flex',alignItems:'center',background:'var(--gold)',color:'#000',padding:'12px 24px',borderRadius:10,fontFamily:'Outfit,sans-serif',fontSize:14,fontWeight:700,textDecoration:'none',whiteSpace:'nowrap'}}>
+              Apply for Credit
+            </a>
+            <a href="tel:4424484848" style={{display:'inline-flex',alignItems:'center',background:'transparent',color:'var(--gold-light)',padding:'12px 24px',borderRadius:10,fontFamily:'Outfit,sans-serif',fontSize:14,fontWeight:600,textDecoration:'none',whiteSpace:'nowrap',border:'1px solid var(--border3)'}}>
+              📞 (442) 448-4848
+            </a>
+          </div>
+        </div>
+
       </div>
 
       <style>{`
-        .about-wrap {
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 48px 48px 80px;
+        .about-wrap { max-width:1000px; margin:0 auto; padding:48px 48px 80px; }
+
+        .about-story { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-bottom:64px; }
+        .about-body { font-size:15px; line-height:1.85; color:var(--off-white); }
+        .about-body p { margin-bottom:18px; }
+        .about-body p:last-child { margin-bottom:0; }
+        .about-body strong { color:var(--white); }
+
+        .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:0; }
+        .value-card { background:var(--card2); border:1px solid var(--border); border-radius:12px; padding:22px; transition:border-color 0.2s; }
+        .value-card:hover { border-color:var(--gold); }
+        .value-icon { font-size:22px; margin-bottom:10px; }
+        .value-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px; }
+        .value-desc { font-size:13px; color:var(--muted); line-height:1.6; }
+
+        .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:0; }
+        .team-card { background:var(--card2); border:1px solid var(--border); border-radius:12px; overflow:hidden; text-align:center; transition:border-color 0.2s; }
+        .team-card:hover { border-color:var(--gold); }
+        .team-avatar { height:110px; background:linear-gradient(145deg,var(--card3),var(--card)); display:flex; align-items:center; justify-content:center; font-size:40px; }
+        .team-info { padding:14px 16px 18px; }
+        .team-name { font-size:15px; font-weight:700; color:var(--white); margin-bottom:4px; }
+        .team-role { font-size:11px; font-weight:600; color:var(--gold-light); letter-spacing:0.5px; text-transform:uppercase; }
+
+        @media (max-width:900px) {
+          .about-wrap { padding:40px 24px 64px; }
+          .about-story { grid-template-columns:1fr; gap:32px; margin-bottom:48px; }
+          .about-stats-grid { grid-template-columns:1fr 1fr !important; }
+          .values-grid { grid-template-columns:repeat(2,1fr); }
+          .team-grid   { grid-template-columns:repeat(2,1fr); }
         }
 
-        /* ── Story ── */
-        .about-story {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
-          align-items: start;
-          margin-bottom: 64px;
-        }
-        .about-body { font-size: 15px; line-height: 1.85; color: var(--off-white); }
-        .about-body p { margin-bottom: 18px; }
-        .about-body p:last-child { margin-bottom: 0; }
-        .about-body strong { color: var(--white); }
-
-        /* ── Values ── */
-        .values-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 14px;
-          margin-bottom: 0;
-        }
-        .value-card {
-          background: var(--card2);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          padding: 22px;
-          transition: border-color 0.2s;
-        }
-        .value-card:hover { border-color: var(--blue); }
-        .value-icon { font-size: 22px; margin-bottom: 10px; }
-        .value-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
-        .value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-        /* ── Team ── */
-        .team-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 14px;
-          margin-top: 0;
-        }
-        .team-card {
-          background: var(--card2);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          overflow: hidden;
-          text-align: center;
-          transition: border-color 0.2s;
-        }
-        .team-card:hover { border-color: var(--blue); }
-        .team-avatar {
-          height: 110px;
-          background: linear-gradient(145deg, var(--card3), var(--card));
-          display: flex; align-items: center; justify-content: center;
-          font-size: 40px;
-        }
-        .team-info { padding: 14px 16px 18px; }
-        .team-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-        .team-role { font-size: 11px; font-weight: 600; color: var(--blue-light); letter-spacing: 0.5px; text-transform: uppercase; }
-
-        @media (max-width: 900px) {
-          .about-wrap { padding: 40px 24px 64px; }
-          .about-story { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
-          .values-grid { grid-template-columns: repeat(2, 1fr); }
-          .team-grid   { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-          .about-wrap { padding: 28px 20px 56px; }
-          .about-story { gap: 24px; margin-bottom: 40px; }
-
-          /* Values — stacked list */
-          .values-grid { grid-template-columns: 1fr; gap: 0; }
-          .value-card {
-            border-radius: 0;
-            border-bottom: none;
-            padding: 18px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-          }
-          .value-card:first-child { border-radius: 12px 12px 0 0; }
-          .value-card:last-child  { border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--border); }
-          .value-icon { font-size: 22px; margin-bottom: 0; flex-shrink: 0; margin-top: 2px; }
-          .value-title { margin-bottom: 3px; }
-
-          /* Team — stacked list with avatar on left */
-          .team-grid { grid-template-columns: 1fr; gap: 0; }
-          .team-card {
-            border-radius: 0;
-            border-bottom: none;
-            text-align: left;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-          }
-          .team-card:first-child { border-radius: 12px 12px 0 0; }
-          .team-card:last-child  { border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--border); }
-          .team-avatar {
-            height: 72px;
-            width: 72px;
-            min-width: 72px;
-            font-size: 30px;
-            border-radius: 0;
-          }
-          .team-info { padding: 0 16px; text-align: left; }
-          .team-name { font-size: 15px; }
+        @media (max-width:768px) {
+          .about-wrap { padding:28px 20px 56px; }
+          .about-story { gap:24px; margin-bottom:40px; }
+          .about-stats-grid { grid-template-columns:1fr 1fr !important; gap:10px !important; }
+          .values-grid { grid-template-columns:1fr; gap:0; }
+          .value-card { border-radius:0; border-bottom:none; padding:18px 20px; display:flex; align-items:flex-start; gap:14px; }
+          .value-card:first-child { border-radius:12px 12px 0 0; }
+          .value-card:last-child  { border-radius:0 0 12px 12px; border-bottom:1px solid var(--border); }
+          .value-icon { font-size:22px; margin-bottom:0; flex-shrink:0; margin-top:2px; }
+          .value-title { margin-bottom:3px; }
+          .team-grid { grid-template-columns:1fr; gap:0; }
+          .team-card { border-radius:0; border-bottom:none; text-align:left; display:flex; flex-direction:row; align-items:center; }
+          .team-card:first-child { border-radius:12px 12px 0 0; }
+          .team-card:last-child  { border-radius:0 0 12px 12px; border-bottom:1px solid var(--border); }
+          .team-avatar { height:72px; width:72px; min-width:72px; font-size:30px; border-radius:0; }
+          .team-info { padding:0 16px; text-align:left; }
+          .team-name { font-size:15px; }
         }
       `}</style>
     </div>

@@ -4,29 +4,31 @@ import { useAuth } from '../context/AuthContext'
 import './Navbar.css'
 
 const NAV_LINKS = [
-  { path: '/',            label: 'Home' },
-  { path: '/offers',      label: 'Monthly Offers' },
-  { path: '/faqs',        label: 'FAQs' },
-  { path: '/about',       label: 'About Us' },
-  { path: '/contact',     label: 'Contact Us' },
-
-  {/* { path: '/inventory',   label: 'Vehicle Inventory' }, */},
-
-  { path: '/credit',      label: 'Credit Application' , cta: true },
+  { path: '/',         label: 'Home' },
+  { path: '/offers',   label: 'Monthly Offers' },
+  { path: '/faqs',     label: 'FAQs' },
+  { path: '/about',    label: 'About Us' },
+  { path: '/contact',  label: 'Contact Us' },
+  { path: '/credit',   label: 'Credit Application', cta: true },
 ]
 
+/* { path: '/inventory', label: 'Vehicle Inventory' }, */
+
 export default function Navbar() {
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate  = useNavigate()
+  const location  = useLocation()
   const { staff, logout } = useAuth()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen]   = useState(false)
   const isAdmin = location.pathname.startsWith('/admin')
 
   useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  useEffect(() => {
     const close = (e) => {
-      if (!e.target.closest('.mobile-menu') && !e.target.closest('.nav-toggle')) {
-        setOpen(false)
-      }
+      if (!e.target.closest('.mobile-menu') && !e.target.closest('.nav-toggle')) setOpen(false)
     }
     document.addEventListener('click', close)
     return () => document.removeEventListener('click', close)
@@ -50,13 +52,17 @@ export default function Navbar() {
     return (
       <nav className="navbar">
         <button className="logo" onClick={() => go('/admin')}>
-          <span style={{color:'var(--yellow)'}}>Crystal Auto Leasing</span> <span className="admin-badge">ADMIN</span>
+          <span style={{color:'var(--gold)'}}>CRYSTAL</span>
+          <span style={{color:'var(--white)'}}> AUTO LEASING</span>
+          <span className="admin-badge">ADMIN</span>
         </button>
         <div className="admin-nav-links">
           <button className="nav-link" onClick={() => go('/admin')}>Staff Dashboard</button>
           <button className="nav-link" onClick={() => go('/admin/clients')}>View Clients</button>
-          <button className="nav-link" onClick={() => go('/admin/contacts')}>View Contact Submission</button>
-          {/*<button className="nav-link" onClick={() => go('/admin/inventory')}>Manage Vehicle Inventory</button>*/}
+          <button className="nav-link" onClick={() => go('/admin/contacts')}>Contact Submissions</button>
+
+          {/* <button className="nav-link" onClick={() => go('/admin/inventory')}>Manage Inventory</button> */}
+
           <button className="nav-link nav-cta" onClick={logout}>Sign Out</button>
         </div>
       </nav>
@@ -66,8 +72,9 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <button className="logo" onClick={() => go('/')}>
-          <strong><span style={{color:'var(--yellow)'}}>Crystal Auto Leasing</span></strong>
+        <button className="logo" onClick={() => go('/admin')}>
+          <span style={{color:'var(--gold)'}}>CRYSTAL</span>
+          <span style={{color:'var(--white)'}}> AUTO LEASING</span>
         </button>
         <ul className="nav-links">
           {NAV_LINKS.map(({ path, label, cta }) => (
@@ -86,23 +93,40 @@ export default function Navbar() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >
-          <span />
-          <span />
-          <span />
+          <span /> <span /> <span />
         </button>
       </nav>
 
       {open && (
         <div className="mobile-menu">
-          {NAV_LINKS.map(({ path, label, cta }) => (
-            <button
-              key={path}
-              className={`mobile-link${cta ? ' mobile-link-cta' : ''}${location.pathname === path ? ' mobile-link-active' : ''}`}
-              onClick={() => go(path)}
-            >
-              {label}
-            </button>
-          ))}
+          <div className="mobile-menu-links">
+            <br /><br /><br /><br /><br /><br /><br />
+            {NAV_LINKS.map(({ path, label, cta }, i) => (
+              <button
+                key={path}
+                className={`mobile-link${cta ? ' mobile-link-cta' : ''}${location.pathname === path ? ' mobile-link-active' : ''}`}
+                onClick={() => go(path)}
+                style={{animationDelay: `${i * 40}ms`}}
+              >
+                <span className="mobile-link-label">{label}</span>
+                {!cta && <span className="mobile-link-arrow"></span>}
+              </button>
+            ))}
+          </div>
+
+          <div className="mobile-menu-footer">
+            <div className="mobile-menu-divider" />
+            <div className="mobile-menu-contact">
+              <a href="tel:4424484848" className="mobile-contact-item">
+                <span className="mobile-contact-icon">📞</span>
+                <span>(442) 448-4848</span>
+              </a>
+              <a href="mailto:crystalautoleasing@gmail.com" className="mobile-contact-item">
+                <span className="mobile-contact-icon">✉️</span>
+                <span>crystalautoleasing@gmail.com</span>
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </>

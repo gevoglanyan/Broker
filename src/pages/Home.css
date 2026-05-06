@@ -113,6 +113,7 @@
 .why-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
 .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-top:48px; }
 .why-features { display:flex; flex-direction:column; gap:6px; }
+.why-features-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:48px; }
 .feature-item { display:flex; gap:16px; align-items:flex-start; padding:18px; border-radius:var(--radius-md); border:1px solid transparent; transition:background 0.2s ease, border-color 0.2s ease; -webkit-tap-highlight-color:transparent; }
 .feature-item:hover { background:var(--card2); border-color:var(--border); }
 .feature-icon { width:42px; height:42px; border-radius:10px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px; }
@@ -132,6 +133,7 @@
 .footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:center; align-items:center; }
 .footer-copy { font-size:13px; color:var(--muted2); }
 
+
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns:1fr; gap:36px; padding:28px 24px 52px; }
   .hero-visual { order:-1; }
@@ -140,9 +142,12 @@
   .cars-grid { grid-template-columns:1fr 1fr; padding:0 24px; gap:12px; }
   .inventory-strip, .why-section { padding:56px 0; }
   .why-grid { grid-template-columns:1fr; gap:40px; }
+  .why-features-grid { grid-template-columns:1fr; }
+  .testimonials-grid { grid-template-columns:1fr 1fr !important; }
   .footer-top { grid-template-columns:1fr 1fr; gap:32px; }
   .section-header { flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:24px; }
 }
+
 
 @media (max-width: 768px) {
   .hero { min-height:auto; padding-top:64px; }
@@ -166,6 +171,9 @@
   .why-section { padding:48px 0; }
   .why-inner { padding:0 20px; }
   .feature-item { padding:14px 12px; }
+  .why-features-grid { grid-template-columns:1fr; gap:0; }
+  .testimonials-grid { grid-template-columns:1fr !important; }
+  .testimonials-inner, .cta-inner { padding:0 20px !important; }
   .footer { padding:48px 0 24px; }
   .footer-inner { padding:0 20px; }
   .footer-top { grid-template-columns:1fr; gap:28px; margin-bottom:32px; text-align:center; }

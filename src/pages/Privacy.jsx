@@ -52,7 +52,7 @@ export default function Privacy() {
           </Section>
 
           <Section title="5. Data Security">
-            <p>We implement industry-standard security measures to protect your personal information, including SSL encryption for data transmission. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+            <p>We implement industry-standard security measures to protect your personal information, including AES-256 encryption for sensitive data and SSL encryption for data transmission. Social Security numbers are encrypted before storage and are never retained in plain text. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
           </Section>
 
           <Section title="6. Data Retention">
@@ -71,8 +71,7 @@ export default function Privacy() {
           </Section>
 
           <Section title="8. California Privacy Rights (CCPA)">
-            <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to delete personal information, and the right to opt out of the sale of personal information. We do not sell personal information. To submit a request, contact us at <a href="tel:8186666066" style={{color:'var(--red-light)'}}>
-              (818) 666-6066</a>.</p>
+            <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to delete personal information, and the right to opt out of the sale of personal information. We do not sell personal information. To submit a request, contact us at <a href="tel:4424484848" style={{color:'var(--gold-light)', textDecoration:'none'}}>(442) 448-4848</a>.</p>
           </Section>
 
           <Section title="9. Cookies">
@@ -95,12 +94,9 @@ export default function Privacy() {
             <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
             <div style={{marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8}}>
               <p><strong style={{color:'var(--white)'}}>Crystal Auto Leasing</strong></p>
-              <p>📞 <a href="tel:4424484848" style={{color:'var(--red-light)', textDecoration:'none'}}>
-                (442) 448-4848</a></p>
-              <p>✉️ <span style={{color:'var(--off-white)'}}>
-                crystalautoleasing@gmail.com</span></p>
-              <p>📍 <span style={{color:'var(--off-white)'}}>
-                1907 W Burbank Blvd Unit B, Burbank, CA 91506</span></p>
+              <p>📞 <a href="tel:4424484848" style={{color:'var(--gold-light)', textDecoration:'none'}}>(442) 448-4848</a></p>
+              <p>✉️ <span style={{color:'var(--off-white)'}}>crystalautoleasing@gmail.com</span></p>
+              <p>📍 <span style={{color:'var(--off-white)'}}>1907 W Burbank Blvd Unit B, Burbank, CA 91506</span></p>
             </div>
           </Section>
 
@@ -128,16 +124,6 @@ function Section({ title, children, last }) {
       }}>
         {children}
       </div>
-      <style>{`
-        .privacy-section ul {
-          padding-left: 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        .privacy-section li { font-size: 15px; color: var(--off-white); line-height: 1.7; }
-        .privacy-section strong { color: var(--white); }
-      `}</style>
     </div>
   )
 }

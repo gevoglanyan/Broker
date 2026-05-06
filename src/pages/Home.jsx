@@ -18,6 +18,12 @@ const FEATURES = [
   { icon:'🚗', title:'All Credit Situations Welcome', desc:'Excellent credit or rebuilding — we work with lenders across the spectrum to find you a deal.' },
 ]
 
+const TESTIMONIALS = [
+  { name:'Michael R.', location:'Burbank, CA', stars:5, text:'Crystal Auto Leasing got me into my dream car at a price I couldn\'t believe. The whole process took less than 48 hours. No pressure, no hidden fees — just a great deal.' },
+  { name:'Sandra L.',  location:'Los Angeles, CA', stars:5, text:'I had no idea leasing could be this easy. My advisor walked me through everything step by step. I\'ll never go back to a traditional dealership again.' },
+  { name:'David K.',   location:'Glendale, CA', stars:5, text:'They consistently beat every other quote I get. Trustworthy, fast, and genuinely care about getting you the best deal. I highly recommend them.' },
+]
+
 const YEAR = new Date().getFullYear()
 
 export default function Home() {
@@ -165,7 +171,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
             {/*
+
             <br />
             <div className="why-image">
               <div className="big-number">10</div>
@@ -173,8 +181,61 @@ export default function Home() {
               <p className="why-quote">Over <strong>10 years</strong> putting customers in the driver's seat at prices they can feel good about.</p>
               <p className="why-attribution"><strong>CRYSTAL AUTO LEASING</strong> — Est. 2015</p>
             </div>
+            
             */}
+
           </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section style={{padding:'80px 0',background:'var(--black)',borderTop:'1px solid var(--border)'}}>
+        <div style={{maxWidth:1200,margin:'0 auto',padding:'0 48px'}} className="testimonials-inner">
+          <div className="section-label" style={{marginBottom:8}}>What Clients Say</div>
+          <div className="section-title" style={{marginBottom:48}}>REAL PEOPLE. REAL DEALS.</div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20}} className="testimonials-grid">
+            {TESTIMONIALS.map(t => (
+              <div key={t.name} style={{background:'var(--card2)',border:'1px solid var(--border)',borderRadius:16,padding:'28px 24px',display:'flex',flexDirection:'column',gap:16,transition:'border-color 0.2s'}}
+                onMouseEnter={e => e.currentTarget.style.borderColor='var(--gold)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor='var(--border)'}
+              >
+                <div style={{display:'flex',gap:3}}>
+                  {Array.from({length:t.stars}).map((_,i) => (
+                    <span key={i} style={{color:'var(--gold)',fontSize:15}}>★</span>
+                  ))}
+                </div>
+                <p style={{fontSize:14,color:'var(--off-white)',lineHeight:1.75,flex:1}}>"{t.text}"</p>
+                <div style={{borderTop:'1px solid var(--border)',paddingTop:16}}>
+                  <div style={{fontSize:14,fontWeight:700,color:'var(--white)'}}>{t.name}</div>
+                  <div style={{fontSize:12,color:'var(--muted)',marginTop:2}}>{t.location}</div>
+                  <div style={{fontSize:12,color:'var(--gold-light)',marginTop:4,fontStyle:'italic'}}>{t.vehicle}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{padding:'80px 0',background:'var(--dark)',borderTop:'1px solid var(--border)'}}>
+        <div style={{maxWidth:700,margin:'0 auto',padding:'0 48px',textAlign:'center'}} className="cta-inner">
+          <div style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(36px,5vw,64px)',letterSpacing:2,lineHeight:1,marginBottom:20}}>
+            READY TO DRIVE YOUR <span style={{color:'var(--gold)'}}>DREAM CAR?</span>
+          </div>
+          <p style={{fontSize:16,color:'var(--off-white)',lineHeight:1.7,maxWidth:500,margin:'0 auto 36px'}}>
+            It starts with a simple application. No pressure, no obligation — just a real advisor working to get you the best possible deal.
+          </p>
+          <div style={{display:'flex',gap:16,justifyContent:'center',flexWrap:'wrap'}}>
+            <button className="btn btn-primary" style={{padding:'15px 36px',fontSize:16}} onClick={() => navigate('/credit')}>
+              Apply for Credit
+            </button>
+            <button className="btn btn-outline" style={{padding:'15px 36px',fontSize:16}} onClick={() => navigate('/contact')}>
+              Contact Us
+            </button>
+          </div>
+          <p style={{fontSize:13,color:'var(--muted)',marginTop:20}}>
+            Or call us at{' '}
+            <a href="tel:4424484848" style={{color:'var(--gold-light)',textDecoration:'none',fontWeight:600}}>(442) 448-4848</a>
+          </p>
         </div>
       </section>
 
@@ -201,7 +262,9 @@ export default function Home() {
               <h4>Quick Links</h4>
               <ul>
                 <li><button onClick={() => navigate('/')}>Home</button></li>
-                {/*<li><button onClick={() => navigate('/inventory')}>Vehicle Inventory</button></li>*/}
+
+                {/* <li><button onClick={() => navigate('/inventory')}>Vehicle Inventory</button></li> */}
+
                 <li><button onClick={() => navigate('/offers')}>Monthly Offers</button></li>
                 <li><button onClick={() => navigate('/faqs')}>FAQs</button></li>
                 <li><button onClick={() => navigate('/credit')}>Credit Application</button></li>
