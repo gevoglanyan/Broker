@@ -100,7 +100,7 @@ export default function Navbar() {
       {open && (
         <div className="mobile-menu">
           <div className="mobile-menu-links">
-            <br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br />
             {NAV_LINKS.map(({ path, label, cta }, i) => (
               <button
                 key={path}
